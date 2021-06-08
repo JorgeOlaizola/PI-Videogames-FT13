@@ -3,12 +3,11 @@ const { Router } = require('express');
 const express = require('express')
 const axios = require('axios').default
 const { API_KEY } = process.env;
+const { sequelize } = require('../db')
+const { Videogame, Genres } = sequelize.models
+const { v4: newUuid } = require("uuid");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-let PostedVideogames = []
-let addVideogames = function (videogame) {
-    PostedVideogames.push(videogame)
-}
 
 const router = Router();
 
@@ -20,7 +19,8 @@ router.get('/videogames', (req, res) => {
         return {
             name: game.name,
             genre: game.genres,
-            image: game.background_image
+            image: game.background_image,
+            id: game.id
         }})
         return res.send(Games)
     })
@@ -35,7 +35,8 @@ router.get('/videogames', (req, res) => {
             return {
                 name: game.name,
                 genre: game.genres,
-                image: game.background_image
+                image: game.background_image,
+                id: game.id
             }})
             return res.json(Games)
         })
@@ -56,7 +57,8 @@ router.get('/videogames/:id', (req, res) => {
                 description: game.description_raw,
                 released: game.released,
                 rating: game.rating,
-                platforms: game.platforms
+                platforms: game.platforms,
+                id: game.id
             }
             return res.send(GameDetail)
         })
@@ -66,28 +68,25 @@ router.get('/videogames/:id', (req, res) => {
 router.get('/genres', (req, res) => {
     axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
     .then((response) => {
-        var Genres = response.data.results.map(genre => genre = genre.name)
-        res.send(Genres)
+        const genres = response.data.results.map(genre => genre = genre.name)
+        return Promise.all(genres.map(genres => Genres.create({name: genres, id: newUuid()})))      
+    })
+    .then((response) => {
+        res.send(response)
     })
 })
 
-router.post('/videogame', (req, res) => {
-        var newPost = req.body
-        var post = {
-            name: newPost.name,
-            description: newPost.description,
-            released: newPost.released,
-            rating: newPost.rating,
-        }
-        if(newPost.genre){
-            post[genres] = newPost.genre
-        }
-        if(newPost.platforms){
-            post[platforms] = newPost.platforms
-        }
-        addVideogames(post)
-        console.log(PostedVideogames)
-        res.send(post)
+router.post('/videogame', async function PostVideogame (req, res) {
+    const { name, description, released, rating, platforms } = req.body;
+    const post = await Videogame.create({
+        name,
+        description,
+        released,
+        rating,
+        platforms,
+        id: newUuid()
+    })    
+    res.send(post)
 })
 
 

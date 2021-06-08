@@ -17,10 +17,14 @@ module.exports = (sequelize) => {
       allowNull: false
     }, 
     released: {
-      type: DataTypes.DATE
+      type: DataTypes.STRING
     },
     rating: {
       type: DataTypes.STRING
+    },
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true
     }
   });
 };
