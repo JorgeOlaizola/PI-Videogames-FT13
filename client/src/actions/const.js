@@ -1,0 +1,1 @@
+export const GETVIDEOGAMES = 'GET_VIDEOGAMES'
