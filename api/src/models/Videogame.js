@@ -8,5 +8,19 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    platforms: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+    released: {
+      type: DataTypes.DATE
+    },
+    rating: {
+      type: DataTypes.STRING
+    }
   });
 };
