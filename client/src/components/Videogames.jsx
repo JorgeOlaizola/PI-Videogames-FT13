@@ -9,7 +9,7 @@ display: flex;
 align-items: center;
 flex-wrap: wrap;
 width: 65%;
-background-color: red;
+background: linear-gradient(205deg, rgba(83,34,167,1) 0%, rgba(24,9,122,1) 35%, rgba(74,39,187,1) 100%);
 margin-left: 100px;
 `
 
@@ -18,8 +18,7 @@ function Videogames({games, getVideogames}) {
 
     return (
         <Conteiner>
-            <button onClick={() => getVideogames()}></button>
-          {games && games.map((g) => <Videogame name={g.name} genre={g.genre} image={g.image}/>)}
+          {games && games.map((g) => <Videogame name={g.name} genre={g.genre} image={g.image} id={g.id}/>)}
         </Conteiner>
     )
 }

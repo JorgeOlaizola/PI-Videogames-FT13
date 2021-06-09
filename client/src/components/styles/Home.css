@@ -1,0 +1,14 @@
+.DHeader{
+    background: radial-gradient(circle, rgba(109,19,166,1) 0%, rgba(94,9,122,1) 35%, rgba(135,60,173,1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.DLogo{
+    background-image: url(./LogoHenry.png);
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addVideogame } from '../actions/actions'
+import './styles/AddVideogame.css'
 
 function  AddVideoGame({addVideogame}) {
   const [input, setInput] = React.useState({
@@ -24,29 +25,29 @@ function  AddVideoGame({addVideogame}) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name:</label>
+    <form className="DForm"onSubmit={handleSubmit}>
+      <div className="DInput">
+        <label>Name</label>
         <input  type="text" name="name" onChange={handleInputChange} value={input.name} />
       </div>
-      <div>
-        <label>Description:</label>
-        <textarea  type="text" name="description" onChange={handleInputChange} value={input.description}></textarea>
+      <div className="DInput">
+        <label>Description</label>
+        <textarea  type="text" name="description"  onChange={handleInputChange} value={input.description}></textarea>
       </div>
-      <div>
-        <label>Released on:</label>
+      <div className="DInput">
+        <label>Released on</label>
         <input  type="text" name="released" onChange={handleInputChange} value={input.released} />
       </div>
-      <div>
-        <label>Rating:</label>
+      <div className="DInput">
+        <label>Rating</label>
         <input  type="text" name="rating" onChange={handleInputChange} value={input.rating} />
       </div>
-      <div>
-        <label>Platforms:</label>
+      <div className="DInput">
+        <label>Platforms</label>
         <input  type="text" name="platforms" onChange={handleInputChange} value={input.platforms} />
       </div>
-      <div>
-        <label>Genres:</label>
+      <div className="DInput">
+        <label>Genres</label>
         <input  type="text" name="genres" onChange={handleInputChange} value={input.genres} />
       </div>
       

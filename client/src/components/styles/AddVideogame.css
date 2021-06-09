@@ -1,0 +1,14 @@
+.DForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.DInput{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
