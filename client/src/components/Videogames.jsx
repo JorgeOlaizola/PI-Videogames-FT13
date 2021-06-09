@@ -5,13 +5,12 @@ import Videogame from './Videogame'
 import styled from 'styled-components'
 
 const Conteiner = styled.div`
-position: absolute;
-right: 100px;
 display: flex;
 align-items: center;
 flex-wrap: wrap;
-width: 70%;
+width: 65%;
 background-color: red;
+margin-left: 100px;
 `
 
 
