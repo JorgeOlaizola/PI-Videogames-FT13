@@ -3,7 +3,7 @@ const { Router } = require('express');
 const express = require('express')
 const axios = require('axios').default
 const { API_KEY } = process.env;
-const { sequelize } = require('../db')
+const { sequelize, Op } = require('../db')
 const { Videogame, Genres } = sequelize.models
 const { v4: newUuid } = require("uuid");
 // Importar todos los routers;
@@ -15,15 +15,30 @@ router.get('/videogames', async function (req, res) {
     if(req.query.name){
     axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${req.query.name}&page_size=15`)
     .then((response) => {
-        var Games = response.data.results.map(game => { 
+        var GamesAPI = response.data.results.map(game => { 
         return {
             name: game.name,
             genre: game.genres,
             image: game.background_image,
             id: game.id
         }})
-        return res.send(Games)
+        return GamesAPI
     })
+    .then(async function (response) {
+        const DBGames = await Videogame.findAll({
+            where: { name: {[Op.iLike]: req.query.name + '%' }},
+            attributes: { exclude: ['createdAt' , 'updatedAt']},
+            include: {
+                model: Genres,
+                attributes: ["name"],
+                through: {
+                    attributes: []
+                }    
+            }
+        })
+        console.log(DBGames)
+        return res.send([...DBGames, ...response])
+    }) 
     .catch(() =>{
         return res.status(404).send('The game you are looking for does not exist or is not registered in our database')
     })
@@ -41,32 +56,60 @@ router.get('/videogames', async function (req, res) {
             return APIGames
         })
         .then(async function (response) {
-            const DBGames = await Videogame.findAll()
-            await DBGames.map(videogame => videogame[genres] = videogame.getGenre())
-            res.json([...DBGames, ...response])
+            const DBGames = await Videogame.findAll({
+                attributes: { exclude: ['createdAt' , 'updatedAt']},
+                include: {
+                    model: Genres,
+                    attributes: ["name"],
+                    through: {
+                        attributes: []
+                    }    
+                }
+            })
+            return res.send([...DBGames, ...response])
         }) 
         .catch((err) => {
             return res.send(err)
     })}
 })
 
-router.get('/videogames/:id', (req, res) => {
+router.get('/videogames/:id', async (req, res) => {
     if(req.params.id){
+
+        //Compara con la DB
+        const DBGame = await Videogame.findByPk(req.params.id,
+            {
+            attributes: { exclude: ['createdAt' , 'updatedAt']},
+            include: {
+                    model: Genres,
+                    attributes: ["name"],
+                    through: {
+                        attributes: []
+                        }    
+            }
+            })
+            .catch(() => console.log('Formato inválido'))
+            if(DBGame) return res.send(DBGame)
+
+        //Compara con la API
         axios.get(`https://api.rawg.io/api/games/${req.params.id}?key=${API_KEY}`)
         .then((response) => {
             var game = response.data
-            var GameDetail = { 
-                name: game.name,
-                genre: game.genres,
-                image: game.background_image,
-                description: game.description_raw,
-                released: game.released,
-                rating: game.rating,
-                platforms: game.platforms,
-                id: game.id
+            if(game) {
+                var GameDetail = { 
+                    name: game.name,
+                    genre: game.genres,
+                    image: game.background_image,
+                    description: game.description_raw,
+                    released: game.released,
+                    rating: game.rating,
+                    platforms: game.platforms,
+                    id: game.id
+                }  
+                return res.send(GameDetail)
             }
-            return res.send(GameDetail)
         })
+        .catch(() => res.send('Videogame not found'))
     }
 })
 
