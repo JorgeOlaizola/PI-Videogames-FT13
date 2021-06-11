@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     platforms: {
@@ -21,6 +21,9 @@ module.exports = (sequelize) => {
     },
     rating: {
       type: DataTypes.STRING
+    },
+    image: {
+      type: DataTypes.TEXT
     },
     id: {
       type: DataTypes.UUID,

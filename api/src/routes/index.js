@@ -11,7 +11,7 @@ const { v4: newUuid } = require("uuid");
 
 const router = Router();
 
-router.get('/videogames', (req, res) => {
+router.get('/videogames', async function (req, res) {
     if(req.query.name){
     axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${req.query.name}&page_size=15`)
     .then((response) => {
@@ -31,15 +31,20 @@ router.get('/videogames', (req, res) => {
     if(!req.query.name){
         axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=15`)
         .then((response) => {
-            var Games = response.data.results.map(game => { 
-            return {
-                name: game.name,
-                genre: game.genres,
-                image: game.background_image,
-                id: game.id
-            }})
-            return res.json(Games)
+            var APIGames = response.data.results.map(game => { 
+                return {
+                    name: game.name,
+                    genre: game.genres,
+                    image: game.background_image,
+                    id: game.id
+                }})
+            return APIGames
         })
+        .then(async function (response) {
+            const DBGames = await Videogame.findAll()
+            await DBGames.map(videogame => videogame[genres] = videogame.getGenre())
+            res.json([...DBGames, ...response])
+        }) 
         .catch((err) => {
             return res.send(err)
     })}
@@ -69,24 +74,39 @@ router.get('/genres', (req, res) => {
     axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
     .then((response) => {
         const genres = response.data.results.map(genre => genre = genre.name)
-        return Promise.all(genres.map(genres => Genres.create({name: genres, id: newUuid()})))      
+        return Promise.all(genres.map(genres => Genres.create({name: genres})))      
+    })
+    .then(() => {
+        return Genres.findAll()
     })
     .then((response) => {
-        res.send(response)
+        res.send(response.map(g => {return {
+            name: g.name,
+            id: g.id
+        }}))
     })
 })
 
 router.post('/videogame', async function PostVideogame (req, res) {
-    const { name, description, released, rating, platforms } = req.body;
+    const { name, description, released, rating, platforms, genres, image } = req.body;
     const post = await Videogame.create({
         name,
         description,
-        released,
-        rating,
+        released: released || '0000-00-00',
+        rating: rating || 0,
         platforms,
+        image,
         id: newUuid()
     })    
-    res.send(post)
+    let theGenres
+    if(Array.isArray(genres)){
+        theGenres = await Promise.all(genres.map(g => Genres.findByPk(g.id)))
+    }
+    else{
+        theGenres = await Genres.findByPk(genres.id)
+    }
+    await post.setGenres(theGenres)
+    return res.json(post.id)
 })
 
 
