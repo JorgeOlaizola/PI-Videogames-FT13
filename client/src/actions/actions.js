@@ -11,10 +11,23 @@ export function getVideogames() {
 }
 
 export function addVideogame (payload) {
-    return function(dispatch){
-     axios.post('http://localhost:3001/videogame', payload)
+    
+
+    let post = {
+        name: payload.name,
+        description: payload.description,
+        rating: payload.rating,
+        image: payload.image,
+        platforms: payload.platforms,
+        genres: payload.genres,
+        released: payload.RelYear + "-" + payload.RelMonth + "-" + payload.RelDay
+    } 
+    return function(){
+        axios.post('http://localhost:3001/videogame', post)
     }
 }
+
+
 
 export function getGameDetail (id) {
     return function(dispatch){

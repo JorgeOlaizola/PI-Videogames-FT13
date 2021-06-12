@@ -7,10 +7,13 @@ function  AddVideoGame({addVideogame}) {
   const [input, setInput] = React.useState({
     name: '',
     description: '',
-    released: '',
+    RelYear: '',
+    RelMonth: '',
+    RelDay: '',
     rating: '',
     platforms: '',
-    genres: ''
+    genres: '',
+    image: ''
   });
 
   const handleInputChange = function(e) {
@@ -19,13 +22,21 @@ function  AddVideoGame({addVideogame}) {
       [e.target.name]: e.target.value
     });
   }
-  const handleSubmit = function(e) {
+
+  const handleInputImage = function(files) {
+    setInput({
+    ...input,
+    image: 'hola'
+    });
+  }
+
+  const handleSubmit = async function(e) {
     e.preventDefault()
     addVideogame(input)
   }
 
   return (
-    <form className="DForm"onSubmit={handleSubmit}>
+    <form className="DForm" onSubmit={handleSubmit}>
       <div className="DInput">
         <label>Name</label>
         <input  type="text" name="name" onChange={handleInputChange} value={input.name} />
@@ -34,11 +45,19 @@ function  AddVideoGame({addVideogame}) {
         <label>Description</label>
         <textarea  type="text" name="description"  onChange={handleInputChange} value={input.description}></textarea>
       </div>
-      <div className="DInput">
+      <div className="DInputRel">
         <label>Released on</label>
-        <input  type="text" name="released" onChange={handleInputChange} value={input.released} />
+        <input  type="text" name="RelYear" onChange={handleInputChange} value={input.RelYear} placeholder="YYYY" />
+        -
+        <input  type="text" name="RelMonth" onChange={handleInputChange} value={input.RelMonth} placeholder="MM" />
+        -
+        <input  type="text" name="RelDay" onChange={handleInputChange} value={input.RelDay} placeholder="DD" />
       </div>
       <div className="DInput">
+      <div className="DInput">
+        <label>Image</label>
+        <input  type="file" name="image" onChange={(event) => handleInputImage(event)} value={input.image} />
+      </div>
         <label>Rating</label>
         <input  type="text" name="rating" onChange={handleInputChange} value={input.rating} />
       </div>
