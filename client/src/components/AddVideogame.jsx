@@ -1,15 +1,14 @@
+import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
 import { addVideogame } from '../actions/actions'
 import './styles/AddVideogame.css'
 
-function  AddVideoGame({addVideogame}) {
+function  AddVideoGame({addVideogame, genres}) {
   const [input, setInput] = React.useState({
     name: '',
     description: '',
-    RelYear: '',
-    RelMonth: '',
-    RelDay: '',
+    date: '',
     rating: '',
     platforms: '',
     genres: '',
@@ -24,10 +23,15 @@ function  AddVideoGame({addVideogame}) {
   }
 
   const handleInputImage = function(files) {
-    setInput({
-    ...input,
-    image: 'hola'
-    });
+    const formData = new FormData()
+    formData.append("file", files)
+    formData.append("upload_preset", "upuyvmwv")
+    axios.post('https://api.cloudinary.com/v1_1/jorgeleandroolaizola/image/upload', formData)
+    .then(response => setInput({
+      ...input,
+      image: response.data.secure_url
+      }))
+    
   }
 
   const handleSubmit = async function(e) {
@@ -47,16 +51,12 @@ function  AddVideoGame({addVideogame}) {
       </div>
       <div className="DInputRel">
         <label>Released on</label>
-        <input  type="text" name="RelYear" onChange={handleInputChange} value={input.RelYear} placeholder="YYYY" />
-        -
-        <input  type="text" name="RelMonth" onChange={handleInputChange} value={input.RelMonth} placeholder="MM" />
-        -
-        <input  type="text" name="RelDay" onChange={handleInputChange} value={input.RelDay} placeholder="DD" />
+        <input type="date" name="date" onChange={handleInputChange} value={input.date} ></input>
       </div>
       <div className="DInput">
       <div className="DInput">
         <label>Image</label>
-        <input  type="file" name="image" onChange={(event) => handleInputImage(event)} value={input.image} />
+        <input  type="file" name="image" onChange={(event) => handleInputImage(event.target.files[0])} />
       </div>
         <label>Rating</label>
         <input  type="text" name="rating" onChange={handleInputChange} value={input.rating} />
@@ -67,7 +67,12 @@ function  AddVideoGame({addVideogame}) {
       </div>
       <div className="DInput">
         <label>Genres</label>
-        <input  type="text" name="genres" onChange={handleInputChange} value={input.genres} />
+        <input  type="option" name="genres" onChange={handleInputChange} value={input.genres} />
+        <select>
+          <optgroup label="Genres">
+          {genres && genres.map(g => <option>{g.name}</option>)}
+          </optgroup>
+        </select>
       </div>
       
       <input type="submit" />
@@ -77,8 +82,14 @@ function  AddVideoGame({addVideogame}) {
 
 function mapDispatchToProps (dispatch) {
     return {
-        addVideogame: (input) => dispatch(addVideogame(input))
+        addVideogame: (input) => dispatch(addVideogame(input)),   
     }
   }
+
+function mapStateToProps (state) {
+  return{
+    genres: state.genres
+  }
+}
   
-  export default connect (null, mapDispatchToProps)(AddVideoGame)
+  export default connect (mapStateToProps, mapDispatchToProps)(AddVideoGame)

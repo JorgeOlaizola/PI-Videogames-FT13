@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GETGAMEDETAIL, GETVIDEOGAMES } from "./const";
+import { GETGAMEDETAIL, GETGENRES, GETVIDEOGAMES } from "./const";
 
 export function getVideogames() {
     return function (dispatch) {
@@ -11,8 +11,6 @@ export function getVideogames() {
 }
 
 export function addVideogame (payload) {
-    
-
     let post = {
         name: payload.name,
         description: payload.description,
@@ -20,14 +18,12 @@ export function addVideogame (payload) {
         image: payload.image,
         platforms: payload.platforms,
         genres: payload.genres,
-        released: payload.RelYear + "-" + payload.RelMonth + "-" + payload.RelDay
+        released: payload.date
     } 
     return function(){
         axios.post('http://localhost:3001/videogame', post)
     }
 }
-
-
 
 export function getGameDetail (id) {
     return function(dispatch){
@@ -35,5 +31,14 @@ export function getGameDetail (id) {
         .then((response) => {
              dispatch({type: GETGAMEDETAIL, payload: response.data})
         })    
+    }
+}
+
+export function getGenres () {
+    return function(dispatch){
+        axios.get('http://localhost:3001/genres')
+        .then((response) => {
+            dispatch({type: GETGENRES, payload: response.data})
+        })
     }
 }
