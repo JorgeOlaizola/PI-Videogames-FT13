@@ -139,6 +139,7 @@ router.post('/videogame', async function PostVideogame (req, res) {
         rating: rating || 0,
         platforms,
         image,
+        genres,
         id: newUuid()
     })    
     let theGenres
