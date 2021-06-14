@@ -18,7 +18,7 @@ router.get('/videogames', async function (req, res) {
         var GamesAPI = response.data.results.map(game => { 
         return {
             name: game.name,
-            genre: game.genres,
+            genres: game.genres,
             image: game.background_image,
             id: game.id
         }})
@@ -49,7 +49,7 @@ router.get('/videogames', async function (req, res) {
             var APIGames = response.data.results.map(game => { 
                 return {
                     name: game.name,
-                    genre: game.genres,
+                    genres: game.genres,
                     image: game.background_image,
                     id: game.id
                 }})
@@ -98,7 +98,7 @@ router.get('/videogames/:id', async (req, res) => {
             if(game) {
                 var GameDetail = { 
                     name: game.name,
-                    genre: game.genres,
+                    genres: game.genres,
                     image: game.background_image,
                     description: game.description_raw,
                     released: game.released,
@@ -144,10 +144,10 @@ router.post('/videogame', async function PostVideogame (req, res) {
     })    
     let theGenres
     if(Array.isArray(genres)){
-        theGenres = await Promise.all(genres.map(g => Genres.findByPk(g.id)))
+        theGenres = await Promise.all(genres.map(g => Genres.findByPk(g)))
     }
     else{
-        theGenres = await Genres.findByPk(genres.id)
+        theGenres = await Genres.findByPk(genres)
     }
     await post.setGenres(theGenres)
     return res.json(post.id)
