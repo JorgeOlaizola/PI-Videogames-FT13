@@ -11,7 +11,7 @@ function  AddVideoGame({addVideogame, genres}) {
     date: '',
     rating: '',
     platforms: '',
-    genres: '',
+    genres: [],
     image: ''
   });
 
@@ -33,6 +33,22 @@ function  AddVideoGame({addVideogame, genres}) {
       }))
     
   }
+
+  const handleSelect = function(e) {
+    let select = e.target.selectedOptions
+    let selected = []
+    for(var i = 0; i < select.length; i++){
+      console.log(select[i].value)
+      selected.push(select[i].value)
+    }
+    selected = selected.map(genre => parseInt(genre))
+    console.log(selected)
+    setInput({
+      ...input,
+      genres: selected
+    })
+  }
+
 
   const handleSubmit = async function(e) {
     e.preventDefault()
@@ -67,14 +83,12 @@ function  AddVideoGame({addVideogame, genres}) {
       </div>
       <div className="DInput">
         <label>Genres</label>
-        <input  type="option" name="genres" onChange={handleInputChange} value={input.genres} />
-        <select>
-          <optgroup label="Genres">
-          {genres && genres.map(g => <option>{g.name}</option>)}
-          </optgroup>
+        <p>If you wanna select multiple genres, hold ctrl + click</p>
+        {/* <input  type="option" name="genres" onChange={handleInputChange} value={input.genres} /> */}
+        <select multiple size="10" onChange={handleSelect}>
+          {genres && genres.map(g => <option value={g.id}>{g.name}</option>)}
         </select>
       </div>
-      
       <input type="submit" />
     </form>
   )

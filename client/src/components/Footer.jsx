@@ -5,7 +5,8 @@ const DFooter = styled.div`
 width: 100vw;
 height: auto;
 background-color: black;
-color: white,`
+position: relative;
+bottom: 0;`
 
 export default function Footer() {
     return (

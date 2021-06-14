@@ -43,6 +43,8 @@ margin-bottom: 20px;
 `
 
 const Position = styled.div`
+margin-top: 30px;
+margin-bottom: 30px;
 width: 100%;
 height: 100%;
 display: flex;
@@ -60,7 +62,7 @@ function GameDetail({gameDetail, getGameDetail, id}) {
             <Title>{gameDetail.name}</Title>
             Genres:
             <Genres>
-            {gameDetail.genre && gameDetail.genre.map(g => <div>{g.name}</div>)}
+            {gameDetail.genres && gameDetail.genres.map(g => <div>{g.name}</div>)}
             </Genres>
             <Img src={`${gameDetail.image}`} alt='Videogame image'></Img>
             <hr/>
