@@ -20,6 +20,7 @@ router.get('/videogames', async function (req, res) {
             name: game.name,
             genres: game.genres,
             image: game.background_image,
+            rating: game.rating,
             id: game.id
         }})
         return GamesAPI
@@ -36,7 +37,6 @@ router.get('/videogames', async function (req, res) {
                 }    
             }
         })
-        console.log(DBGames)
         return res.send([...DBGames, ...response])
     }) 
     .catch(() =>{
@@ -51,6 +51,7 @@ router.get('/videogames', async function (req, res) {
                     name: game.name,
                     genres: game.genres,
                     image: game.background_image,
+                    rating: game.rating,
                     id: game.id
                 }})
             return APIGames
@@ -75,7 +76,7 @@ router.get('/videogames', async function (req, res) {
 
 router.get('/videogames/:id', async (req, res) => {
     if(req.params.id){
-
+        console.log(req.params.id)
         //Compara con la DB
         const DBGame = await Videogame.findByPk(req.params.id,
             {
