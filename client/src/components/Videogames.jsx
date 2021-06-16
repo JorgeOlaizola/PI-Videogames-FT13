@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { getVideogames } from '../actions/actions'
 import Videogame from './Videogame'
+import Pagination from './Pagination'
 import styled from 'styled-components'
 
 const Conteiner = styled.div`
@@ -16,17 +17,29 @@ background: linear-gradient(205deg, rgba(83,34,167,1) 0%, rgba(24,9,122,1) 35%, 
 margin-left: 100px;
 border-radius: 25px;
 box-shadow: 15px 15px 15px 15px rgba(0, 0, 0, 0.2);
+position: relative;
 `
 
 
-function Videogames({games}) {
+function Videogames({games, getVideogames}) {
     React.useEffect(() => {
-        console.log('Se ordenó todo')
-    })
+        getVideogames('')
+    }, [])
+    const [currentPage, setCurrentPage] = useState(1)
+    const [cardPerPage] = useState(15)
+
+    const indexOfLastCard = currentPage * cardPerPage
+    const indexOfFirstCard = indexOfLastCard - cardPerPage;
+    var currentCards = games.slice(indexOfFirstCard, indexOfLastCard)
+
+    const paginate = (pageNumber) => {
+         setCurrentPage(pageNumber)
+    }
 
     return (
         <Conteiner>
-          {games && games.map((g) => <Videogame key={g.id} name={g.name} genres={g.genres} image={g.image} id={g.id}/>)}
+          {currentCards && currentCards.map((g) => <Videogame key={g.id} name={g.name} genres={g.genres} image={g.image} id={g.id}/>)}
+        <Pagination cardPerPage={cardPerPage} totalCards={games.length} paginate={paginate} />
         </Conteiner>
     )
 }
@@ -37,5 +50,10 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getVideogames: (q) => dispatch(getVideogames(q)),
+    }
+}
 
-export default connect (mapStateToProps, null) (Videogames)
+export default connect (mapStateToProps, mapDispatchToProps) (Videogames)
