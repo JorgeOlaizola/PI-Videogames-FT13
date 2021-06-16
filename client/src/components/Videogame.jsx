@@ -10,7 +10,7 @@ export default function Videogame(props) {
             <div className="title">{props.name}</div>
             <div className="infoCont">
             {props.genres && props.genres.map(g => <p>{g.name}</p>)}
-            <button><Link to={`/home/GameDetail/${props.id}`} className="Link">GameDetail</Link></button>
+            { props.id && <button><Link to={`/home/GameDetail/${props.id}`} className="Link">GameDetail</Link></button>}
             </div>
         </div>
     )

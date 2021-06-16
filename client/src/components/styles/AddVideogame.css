@@ -1,13 +1,27 @@
+
 .DForm{
     display: flex;
     width: 70%;
     margin: auto;
     padding: 30px;
-    flex-direction: column;
+    position: relative;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     margin-bottom: 10px;
     background: linear-gradient(205deg, rgba(83,34,167,1) 0%, rgba(24,9,122,1) 35%, rgba(74,39,187,1) 100%);
+    color: white;
+}
+
+.Data{
+    display: flex;
+    width: 70%;
+    margin: auto;
+    padding: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    margin-left: 10%;
     color: white;
 }
 
@@ -16,11 +30,11 @@
     display: flex;
     flex-direction: column;
     margin: 5px;
+    width: 50%
 }
 
 .DInputRel{
-    display: flex;
-    flex-direction: raw;
+    display:flex;
 }
 
 input:invalid {
@@ -30,3 +44,45 @@ input:invalid {
   input:valid {
     border: 2px solid black;
   }
+
+.Preview{
+    margin-right: 10%;
+}
+
+.Comment{
+    color: grey;
+    font-size:small;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.Image{
+    width: auto;
+}
+
+.Rating{
+    width: auto;
+    align-items: flex-start;
+}
+
+.Stars{
+    margin-left: 10px;
+}
+
+.Submit{
+    position: absolute;
+    left: 50%;
+    top: 95%;
+}
+
+.Label{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+
+.LabelGenres{
+    display: flex;
+    align-items: flex-start;
+}

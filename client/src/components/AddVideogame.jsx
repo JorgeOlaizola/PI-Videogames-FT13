@@ -1,15 +1,18 @@
 import axios from 'axios';
 import React from 'react';
+import Videogame from './Videogame'
 import { connect } from 'react-redux';
 import { addVideogame } from '../actions/actions'
 import './styles/AddVideogame.css'
+import { AiTwotoneStar } from "react-icons/ai";
+
 
 function  AddVideoGame({addVideogame, genres}) {
   const [input, setInput] = React.useState({
     name: '',
     description: '',
     date: '',
-    rating: '',
+    rating: '0',
     platforms: '',
     genres: [],
     image: ''
@@ -56,41 +59,58 @@ function  AddVideoGame({addVideogame, genres}) {
   }
 
   return (
+    <div>
     <form className="DForm" onSubmit={handleSubmit}>
+      <div className="Data">
       <div className="DInput">
-        <label>Name</label>
-        <input  type="text" name="name" onChange={handleInputChange} value={input.name} required />
+        <label className="Label">Name</label>
+        <input  placeholder="Set the name of your game" type="text" name="name" onChange={handleInputChange} value={input.name} required />
+      </div>
+      <div className="DInput Description">
+        <label className="Label">Description</label>
+        <textarea  placeholder="Place a brief description of your game" type="text" name="description"  onChange={handleInputChange} value={input.description} required></textarea>
       </div>
       <div className="DInput">
-        <label>Description</label>
-        <textarea  type="text" name="description"  onChange={handleInputChange} value={input.description} required></textarea>
-      </div>
-      <div className="DInputRel">
-        <label>Released on</label>
+        <label className="Label">Released on</label>
         <input type="date" name="date" onChange={handleInputChange} value={input.date} required></input>
       </div>
-      <div className="DInput">
-      <div className="DInput">
-        <label>Image</label>
+      <div className="DInput Image">
+        <label className="Label">Image</label>
         <input  type="file" name="image" onChange={(event) => handleInputImage(event.target.files[0])} required/>
       </div>
+      <div className="DInput Rating">
         <label>Rating</label>
-        <input  type="number" min="0" max="5" name="rating" onChange={handleInputChange} value={input.rating} required/>
+        <div>
+        <input  type="number" min="0" max="5" name="rating" onChange={handleInputChange} value={input.rating} />
+        {input.rating >= 1 && <AiTwotoneStar className="Stars"></AiTwotoneStar>}
+        {input.rating >= 2 && <AiTwotoneStar></AiTwotoneStar>}
+        {input.rating >= 3 && <AiTwotoneStar></AiTwotoneStar>}
+        {input.rating >= 4 && <AiTwotoneStar></AiTwotoneStar>}
+        {input.rating == 5 && <AiTwotoneStar></AiTwotoneStar>}
+        </div>
       </div>
       <div className="DInput">
-        <label>Platforms</label>
-        <input  type="text" name="platforms" onChange={handleInputChange} value={input.platforms} required/>
+        <label className="Label">Platforms</label>
+        <input  placeholder="Tell us which platforms are available for this game" type="text" name="platforms" onChange={handleInputChange} value={input.platforms} required/>
       </div>
       <div className="DInput">
-        <label>Genres</label>
-        <p>If you wanna select multiple genres, hold ctrl + click</p>
+        <label className="LabelGenres">Genres</label>
+        <span className="Comment">*If you wanna select multiple genres, hold ctrl + click</span>
         {/* <input  type="option" name="genres" onChange={handleInputChange} value={input.genres} /> */}
         <select multiple size="10" onChange={handleSelect} required>
           {genres && genres.map(g => <option value={g.id}>{g.name}</option>)}
         </select>
       </div>
-      <input type="submit" />
+      </div>
+      <div className="Preview">
+        <label>Card preview</label>
+      <Videogame name={input.name} genres={input.genres} image={input.image}/>
+      </div>
+      <input className="Submit" type="submit" value="Submit game" />
     </form>
+    </div>
+    
+    
   )
 }
 
