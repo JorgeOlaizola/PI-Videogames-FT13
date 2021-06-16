@@ -1,6 +1,7 @@
 import React from 'react'
 import Filters from './Filters'
 import Videogames from './Videogames'
+import SearchBar from './SearchBar'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { getVideogames, getGenres } from '../actions/actions'
@@ -12,11 +13,12 @@ margin: 50px;
 
 function GetGames({getVideogames, getGenres}) {
     React.useEffect(() => {
-        getVideogames()
+        getVideogames('')
         getGenres()
     }, [])
     return (
         <div>
+                <SearchBar/>
                 <SourceCont>
                     <Filters/>
                     <Videogames/>
@@ -26,9 +28,10 @@ function GetGames({getVideogames, getGenres}) {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        getVideogames: () => dispatch(getVideogames()),
+        getVideogames: (q) => dispatch(getVideogames(q)),
         getGenres: () => dispatch(getGenres())
     }
 }
+
 
 export default connect (null, mapDispatchToProps) (GetGames)

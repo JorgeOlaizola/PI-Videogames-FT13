@@ -19,11 +19,14 @@ box-shadow: 15px 15px 15px 15px rgba(0, 0, 0, 0.2);
 `
 
 
-function Videogames({games, getVideogames}) {
+function Videogames({games}) {
+    React.useEffect(() => {
+        console.log('Se ordenó todo')
+    })
 
     return (
         <Conteiner>
-          {games && games.map((g) => <Videogame name={g.name} genres={g.genres} image={g.image} id={g.id}/>)}
+          {games && games.map((g) => <Videogame key={g.id} name={g.name} genres={g.genres} image={g.image} id={g.id}/>)}
         </Conteiner>
     )
 }
@@ -34,9 +37,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getVideogames: () => dispatch(getVideogames())
-    }
-}
-export default connect (mapStateToProps, mapDispatchToProps) (Videogames)
+
+export default connect (mapStateToProps, null) (Videogames)

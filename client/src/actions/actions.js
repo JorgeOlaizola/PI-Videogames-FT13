@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { GETGAMEDETAIL, GETGENRES, GETVIDEOGAMES } from "./const";
+import { GETGAMEDETAIL, GETGENRES, GETVIDEOGAMES, ORDERBYNAME, ORDERBYRATING } from "./const";
 
-export function getVideogames() {
+export function getVideogames(query) {
     return function (dispatch) {
-        axios.get('http://localhost:3001/videogames')
+        axios.get('http://localhost:3001/videogames' + query)
         .then((response) => {
              dispatch({type: GETVIDEOGAMES, payload: response.data})
         })    
@@ -40,5 +40,17 @@ export function getGenres () {
         .then((response) => {
             dispatch({type: GETGENRES, payload: response.data})
         })
+    }
+}
+
+export function orderByName() {
+    return function (dispatch) {
+        dispatch({type: ORDERBYNAME})
+    }
+}
+
+export function orderByRating() {
+    return function (dispatch) {
+        dispatch({type: ORDERBYRATING})
     }
 }

@@ -59,33 +59,33 @@ function  AddVideoGame({addVideogame, genres}) {
     <form className="DForm" onSubmit={handleSubmit}>
       <div className="DInput">
         <label>Name</label>
-        <input  type="text" name="name" onChange={handleInputChange} value={input.name} />
+        <input  type="text" name="name" onChange={handleInputChange} value={input.name} required />
       </div>
       <div className="DInput">
         <label>Description</label>
-        <textarea  type="text" name="description"  onChange={handleInputChange} value={input.description}></textarea>
+        <textarea  type="text" name="description"  onChange={handleInputChange} value={input.description} required></textarea>
       </div>
       <div className="DInputRel">
         <label>Released on</label>
-        <input type="date" name="date" onChange={handleInputChange} value={input.date} ></input>
+        <input type="date" name="date" onChange={handleInputChange} value={input.date} required></input>
       </div>
       <div className="DInput">
       <div className="DInput">
         <label>Image</label>
-        <input  type="file" name="image" onChange={(event) => handleInputImage(event.target.files[0])} />
+        <input  type="file" name="image" onChange={(event) => handleInputImage(event.target.files[0])} required/>
       </div>
         <label>Rating</label>
-        <input  type="text" name="rating" onChange={handleInputChange} value={input.rating} />
+        <input  type="number" min="0" max="5" name="rating" onChange={handleInputChange} value={input.rating} required/>
       </div>
       <div className="DInput">
         <label>Platforms</label>
-        <input  type="text" name="platforms" onChange={handleInputChange} value={input.platforms} />
+        <input  type="text" name="platforms" onChange={handleInputChange} value={input.platforms} required/>
       </div>
       <div className="DInput">
         <label>Genres</label>
         <p>If you wanna select multiple genres, hold ctrl + click</p>
         {/* <input  type="option" name="genres" onChange={handleInputChange} value={input.genres} /> */}
-        <select multiple size="10" onChange={handleSelect}>
+        <select multiple size="10" onChange={handleSelect} required>
           {genres && genres.map(g => <option value={g.id}>{g.name}</option>)}
         </select>
       </div>

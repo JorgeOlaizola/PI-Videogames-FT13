@@ -54,12 +54,12 @@ align-items: center;
 
 function GameDetail({gameDetail, getGameDetail, id}) {
     React.useEffect(() => {
-       getGameDetail(parseInt(id))
+       getGameDetail(id)
       }, [id]);
     return (
         <Position>
         <Conteiner>
-            <Title>{gameDetail.name}</Title>
+            <Title>{gameDetail && gameDetail.name}</Title>
             Genres:
             <Genres>
             {gameDetail.genres && gameDetail.genres.map(g => <div>{g.name}</div>)}
@@ -67,7 +67,7 @@ function GameDetail({gameDetail, getGameDetail, id}) {
             <Img src={`${gameDetail.image}`} alt='Videogame image'></Img>
             <hr/>
             <InfoCont>
-                <p>Description: {gameDetail.description}</p>
+                <p>Description: {gameDetail && gameDetail.description}</p>
                 <p>This game was released {gameDetail.released}</p>
                 <p>Rating: {gameDetail.rating}</p>
                 <p>Platforms: {gameDetail.platforms && gameDetail.platforms.map(p => <div>{p.platform.name}</div>)}</p>
@@ -85,7 +85,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getGameDetail: (id) => dispatch(getGameDetail(parseInt(id)))
+        getGameDetail: (id) => dispatch(getGameDetail(id))
     }
 }
 
