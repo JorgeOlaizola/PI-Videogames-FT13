@@ -13,7 +13,7 @@ const router = Router();
 
 router.get('/videogames', async function (req, res) {
     if(req.query.name){
-    axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${req.query.name}&page_size=15`)
+    axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${req.query.name}&page_size=40`)
     .then((response) => {
         var GamesAPI = response.data.results.map(game => { 
         return {
@@ -44,7 +44,7 @@ router.get('/videogames', async function (req, res) {
     })
     }
     if(!req.query.name){
-        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=15`)
+        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40`)
         .then((response) => {
             var APIGames = response.data.results.map(game => { 
                 return {
