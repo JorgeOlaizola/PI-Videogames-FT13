@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     platforms: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.JSON({type:DataTypes.JSON(DataTypes.STRING)})),
       allowNull: false
     }, 
     released: {
