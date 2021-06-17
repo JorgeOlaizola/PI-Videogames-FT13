@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { addVideogame } from '../actions/actions'
 import './styles/AddVideogame.css'
 import { AiTwotoneStar } from "react-icons/ai";
+import { useHistory } from 'react-router-dom'
 
 
 function  AddVideoGame({addVideogame, genres}) {
@@ -17,6 +18,8 @@ function  AddVideoGame({addVideogame, genres}) {
     genres: [],
     image: ''
   });
+
+  const history = useHistory()
 
   const handleInputChange = function(e) {
     setInput({
@@ -56,6 +59,7 @@ function  AddVideoGame({addVideogame, genres}) {
   const handleSubmit = async function(e) {
     e.preventDefault()
     addVideogame(input)
+    history.push('/home')
   }
 
   return (
@@ -82,11 +86,11 @@ function  AddVideoGame({addVideogame, genres}) {
         <label>Rating</label>
         <div>
         <input  type="number" min="0" max="5" name="rating" onChange={handleInputChange} value={input.rating} />
-        {input.rating >= 1 && <AiTwotoneStar className="Stars"></AiTwotoneStar>}
-        {input.rating >= 2 && <AiTwotoneStar></AiTwotoneStar>}
-        {input.rating >= 3 && <AiTwotoneStar></AiTwotoneStar>}
-        {input.rating >= 4 && <AiTwotoneStar></AiTwotoneStar>}
-        {input.rating == 5 && <AiTwotoneStar></AiTwotoneStar>}
+        {input.rating >= '1' && <AiTwotoneStar className="Stars"></AiTwotoneStar>}
+        {input.rating >= '2' && <AiTwotoneStar></AiTwotoneStar>}
+        {input.rating >= '3' && <AiTwotoneStar></AiTwotoneStar>}
+        {input.rating >= '4' && <AiTwotoneStar></AiTwotoneStar>}
+        {input.rating === '5' && <AiTwotoneStar></AiTwotoneStar>}
         </div>
       </div>
       <div className="DInput">

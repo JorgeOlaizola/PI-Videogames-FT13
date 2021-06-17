@@ -13,9 +13,17 @@ const router = Router();
 
 router.get('/videogames', async function (req, res) {
     if(req.query.name){
-    axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${req.query.name}&page_size=40`)
-    .then((response) => {
-        var GamesAPI = response.data.results.map(game => { 
+        Promise.all([axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${req.query.name}`),
+        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${req.query.name}&page=2`),
+        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${req.query.name}&page=3`),
+        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${req.query.name}&page=4`),
+        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${req.query.name}&page=5`)])
+        .then((result) => {
+            let response = []
+            for(let i = 0; i < result.length; i++){
+                response = response.concat(result[i].data.results)
+            }
+        var GamesAPI = response.map(game => { 
         return {
             name: game.name,
             genres: game.genres,
@@ -24,29 +32,37 @@ router.get('/videogames', async function (req, res) {
             id: game.id
         }})
         return GamesAPI
-    })
-    .then(async function (response) {
-        const DBGames = await Videogame.findAll({
-            where: { name: {[Op.iLike]: req.query.name + '%' }},
-            attributes: { exclude: ['createdAt' , 'updatedAt']},
-            include: {
-                model: Genres,
-                attributes: ["name"],
-                through: {
-                    attributes: []
-                }    
-            }
         })
-        return res.send([...DBGames, ...response])
-    }) 
-    .catch(() =>{
-        return res.status(404).send('The game you are looking for does not exist or is not registered in our database')
-    })
-    }
+        .then(async function (response) {
+            const DBGames = await Videogame.findAll({
+                where: { name: {[Op.iLike]: req.query.name + '%' }},
+                attributes: { exclude: ['createdAt' , 'updatedAt']},
+                include: {
+                    model: Genres,
+                    attributes: ["name"],
+                    through: {
+                        attributes: []
+                    }    
+                }
+            })
+            return res.send([...DBGames, ...response])
+        }) 
+        .catch(() =>{
+            return res.status(404).send('The game you are looking for does not exist or is not registered in our database')
+        })
+        }
     if(!req.query.name){
-        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40`)
-        .then((response) => {
-            var APIGames = response.data.results.map(game => { 
+        Promise.all([axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`),
+        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=2`),
+        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=3`),
+        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=4`),
+        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=5`)])
+        .then((result) => {
+            let response = []
+            for(let i = 0; i < result.length; i++){
+                response = response.concat(result[i].data.results)
+            }
+            var APIGames = response.map(game => { 
                 return {
                     name: game.name,
                     genres: game.genres,

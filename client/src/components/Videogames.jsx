@@ -22,9 +22,6 @@ position: relative;
 
 
 function Videogames({games, getVideogames}) {
-    React.useEffect(() => {
-        getVideogames('')
-    }, [])
     const [currentPage, setCurrentPage] = useState(1)
     const [cardPerPage] = useState(15)
 

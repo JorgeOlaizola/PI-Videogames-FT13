@@ -16,7 +16,7 @@ export function addVideogame (payload) {
         description: payload.description,
         rating: payload.rating,
         image: payload.image,
-        platforms: payload.platforms,
+        platforms: [{platform: {name: payload.platforms}}],
         genres: payload.genres,
         released: payload.date
     } 

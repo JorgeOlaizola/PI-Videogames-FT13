@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { orderByName, orderByRating } from '../actions/actions'
+import { getVideogames, orderByName, orderByRating } from '../actions/actions'
 import './styles/Filters.css'
 
 const Conteiner = styled.div`
@@ -16,17 +16,17 @@ margin: 10px;
 border-radius: 25px;
 `
 
-function Filters({orderByName, orderByRating}) {
+function Filters({orderRating, orderName, getVideogames}) {
     return (
         <Conteiner>
         <FilterBtn>
         <Link to="/home/addVideoGame" className="Btn">ADD VIDEOGAME</Link>
         </FilterBtn>
         <FilterBtn>
-           <button className="Btn" onClick={orderByName}>ORDER BY NAME</button>
+           <button className="Btn" onClick={() => orderName()}>ORDER BY NAME</button>
         </FilterBtn>
         <FilterBtn>
-           <button className="Btn" onClick={orderByRating}>ORDER BY RATING</button>
+           <button className="Btn" onClick={() => orderRating()}>ORDER BY RATING</button>
         </FilterBtn>
         </Conteiner>
     )
@@ -35,7 +35,8 @@ function Filters({orderByName, orderByRating}) {
 const mapDispatchToProps = function (dispatch) {
     return{
         orderByName: () => dispatch(orderByName()),
-        orderByRating: () => dispatch(orderByRating())
+        orderByRating: () => dispatch(orderByRating()),
+        getVideogames: (q) => dispatch(getVideogames(q))
     }
 }
 

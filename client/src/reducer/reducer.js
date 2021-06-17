@@ -8,8 +8,8 @@ const initialState = {
 
 function reducer (state = initialState, action) { 
     switch(action.type){
-        case GETVIDEOGAMES: 
-        return {...state, games: action.payload}
+        case GETVIDEOGAMES:
+                return {...state, games: action.payload}
         case GETGAMEDETAIL:
         return {...state, gameDetail: action.payload};
         case GETGENRES:

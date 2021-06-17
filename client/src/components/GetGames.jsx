@@ -4,30 +4,52 @@ import Videogames from './Videogames'
 import SearchBar from './SearchBar'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { getGenres } from '../actions/actions'
+import { getGenres, orderByRating, orderByName, getVideogames } from '../actions/actions'
 
 const SourceCont = styled.div`
 display:flex;
 margin: 50px;
 `
 
-function GetGames({getVideogames, getGenres}) {
+function GetGames({ getGenres, orderByName, orderByRating, getVideogames }) {
+    const [change, setChange] = React.useState(true)
     React.useEffect(() => {
         getGenres()
+        getVideogames('')
     }, [])
+    React.useEffect(() => {
+        return () => {
+            setChange(true)
+        }
+    }, [change])
+    const orderName = () => {
+        orderByName()
+        setChange(false)
+    }
+    const orderRating = () => {
+        orderByRating()
+        setChange(false)
+    }
+    const SearchVideogames = (params) => {
+        getVideogames(params)
+        setChange(false)
+    }
     return (
         <div>
-                <SearchBar/>
+                <SearchBar SearchVideogames={SearchVideogames} />
                 <SourceCont>
-                    <Filters/>
-                    <Videogames/>
+                    <Filters orderName={orderName} orderRating={orderRating} />
+                    {change && <Videogames/>}
                 </SourceCont>
-    </div>
+        </div>
     )
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        getGenres: () => dispatch(getGenres())
+        getGenres: () => dispatch(getGenres()),
+        orderByName: () => dispatch(orderByName()),
+        orderByRating: () => dispatch(orderByRating()),
+        getVideogames: (q) => dispatch(getVideogames(q))
     }
 }
 
