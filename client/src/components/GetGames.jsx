@@ -1,17 +1,17 @@
 import React from 'react'
 import Filters from './Filters'
 import Videogames from './Videogames'
-import SearchBar from './SearchBar'
 import styled from 'styled-components'
+import FiltersSearch from './FiltersSearch'
 import { connect } from 'react-redux'
-import { getGenres, orderByRating, orderByName, getVideogames } from '../actions/actions'
+import { getGenres, orderBy, getVideogames } from '../actions/actions'
 
 const SourceCont = styled.div`
 display:flex;
 margin: 50px;
 `
 
-function GetGames({ getGenres, orderByName, orderByRating, getVideogames }) {
+function GetGames({ getGenres, orderBy, getVideogames }) {
     const [change, setChange] = React.useState(true)
     React.useEffect(() => {
         getGenres()
@@ -22,12 +22,8 @@ function GetGames({ getGenres, orderByName, orderByRating, getVideogames }) {
             setChange(true)
         }
     }, [change])
-    const orderName = () => {
-        orderByName()
-        setChange(false)
-    }
-    const orderRating = () => {
-        orderByRating()
+    const order = (order) => {
+        orderBy(order)
         setChange(false)
     }
     const SearchVideogames = (params) => {
@@ -36,9 +32,9 @@ function GetGames({ getGenres, orderByName, orderByRating, getVideogames }) {
     }
     return (
         <div>
-                <SearchBar SearchVideogames={SearchVideogames} />
+                <FiltersSearch SearchVideogames={SearchVideogames} order={order} />
                 <SourceCont>
-                    <Filters orderName={orderName} orderRating={orderRating} />
+                    <Filters />
                     {change && <Videogames/>}
                 </SourceCont>
         </div>
@@ -47,8 +43,7 @@ function GetGames({ getGenres, orderByName, orderByRating, getVideogames }) {
 const mapDispatchToProps = (dispatch) => {
     return {
         getGenres: () => dispatch(getGenres()),
-        orderByName: () => dispatch(orderByName()),
-        orderByRating: () => dispatch(orderByRating()),
+        orderBy: (order) => dispatch(orderBy(order)),
         getVideogames: (q) => dispatch(getVideogames(q))
     }
 }

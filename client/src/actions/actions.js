@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GETGAMEDETAIL, GETGENRES, GETVIDEOGAMES, ORDERBYNAME, ORDERBYRATING } from "./const";
+import { GETGAMEDETAIL, GETGENRES, GETVIDEOGAMES, ORDERBY,  } from "./const";
 
 export function getVideogames(query) {
     return function (dispatch) {
@@ -43,14 +43,8 @@ export function getGenres () {
     }
 }
 
-export function orderByName() {
+export function orderBy(order) {
     return function (dispatch) {
-        dispatch({type: ORDERBYNAME})
-    }
-}
-
-export function orderByRating() {
-    return function (dispatch) {
-        dispatch({type: ORDERBYRATING})
+        dispatch({type: ORDERBY, payload: order})
     }
 }

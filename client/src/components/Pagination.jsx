@@ -10,7 +10,7 @@ export default function Pagination({ cardPerPage, totalCards, paginate }) {
     return (
         <div className="pagpos">
             <ul>
-                {pageNumbers && pageNumbers.map(p => <button onClick={() => paginate(p)}>{p}</button>)}
+                {pageNumbers && pageNumbers.map(p => <li><button onClick={() => paginate(p)}>{p}</button></li>)}
             </ul>
         </div>
     )

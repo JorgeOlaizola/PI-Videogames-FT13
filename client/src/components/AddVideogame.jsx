@@ -14,7 +14,7 @@ function  AddVideoGame({addVideogame, genres}) {
     description: '',
     date: '',
     rating: '0',
-    platforms: '',
+    platforms: [],
     genres: [],
     image: ''
   });
@@ -55,6 +55,25 @@ function  AddVideoGame({addVideogame, genres}) {
     })
   }
 
+  const handlePlatforms = function(e) {
+    if(e.key === 'Enter'){
+      e.preventDefault()
+      if(!input.platforms.find(p => p.platform.name.toLowerCase() === e.target.value.toLowerCase())){
+        setInput({
+          ...input,
+          platforms: [...input.platforms, {platform: {name: e.target.value}}]
+        })
+      }
+      e.target.value = ''
+    }
+  }
+
+  const filterPlatform = function(e) {
+    setInput({
+      ...input,
+      platforms: input.platforms.filter(p => p.find(plat => plat.platform.name === e.target.value))
+    })
+  }
 
   const handleSubmit = async function(e) {
     e.preventDefault()
@@ -95,12 +114,16 @@ function  AddVideoGame({addVideogame, genres}) {
       </div>
       <div className="DInput">
         <label className="Label">Platforms</label>
-        <input  placeholder="Tell us which platforms are available for this game" type="text" name="platforms" onChange={handleInputChange} value={input.platforms} required/>
+        <input  placeholder="Tell us which platforms are available for this game" type="text" name="platforms" onKeyDown={handlePlatforms} required/>
+        {input.platforms.length && input.platforms.map((p) => 
+        <div>
+          {p.platform.name}
+          <button value={p.platform.name} onClick={() => filterPlatform}>X</button>
+        </div>)}
       </div>
       <div className="DInput">
         <label className="LabelGenres">Genres</label>
         <span className="Comment">*If you wanna select multiple genres, hold ctrl + click</span>
-        {/* <input  type="option" name="genres" onChange={handleInputChange} value={input.genres} /> */}
         <select multiple size="10" onChange={handleSelect} required>
           {genres && genres.map(g => <option value={g.id}>{g.name}</option>)}
         </select>

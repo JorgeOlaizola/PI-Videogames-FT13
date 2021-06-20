@@ -23,7 +23,7 @@ export default function Home() {
     return (
         <div>
             <Header className="DHeader">
-                <Link to="/home"><img src={Logo}></img></Link>
+                <Link to="/home"><img src={Logo} alt='Henry Videogames'></img></Link>
             </Header>
             <RandomCont>
              <RandonGame/>

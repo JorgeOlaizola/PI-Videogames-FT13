@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { getVideogames } from '../actions/actions'
 import Videogame from './Videogame'
 import Pagination from './Pagination'
 import styled from 'styled-components'
@@ -9,7 +8,8 @@ const Conteiner = styled.div`
 display: flex;
 align-items: center;
 justify-content: center;
-padding: 30px;
+padding: 50px;
+padding-top: 70px;
 flex-wrap: wrap;
 width: 65%;
 height: 90%; 
@@ -21,7 +21,7 @@ position: relative;
 `
 
 
-function Videogames({games, getVideogames}) {
+function Videogames({games}) {
     const [currentPage, setCurrentPage] = useState(1)
     const [cardPerPage] = useState(15)
 
@@ -35,8 +35,8 @@ function Videogames({games, getVideogames}) {
 
     return (
         <Conteiner>
-          {currentCards && currentCards.map((g) => <Videogame key={g.id} name={g.name} genres={g.genres} image={g.image} id={g.id}/>)}
         <Pagination cardPerPage={cardPerPage} totalCards={games.length} paginate={paginate} />
+          {currentCards && currentCards.map((g) => <Videogame key={g.id} name={g.name} genres={g.genres} image={g.image} id={g.id}/>)}
         </Conteiner>
     )
 }
@@ -47,10 +47,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getVideogames: (q) => dispatch(getVideogames(q)),
-    }
-}
 
-export default connect (mapStateToProps, mapDispatchToProps) (Videogames)
+
+export default connect (mapStateToProps, null) (Videogames)

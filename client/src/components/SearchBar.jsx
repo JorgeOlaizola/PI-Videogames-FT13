@@ -17,8 +17,8 @@ function SearchBar({getVideogames, SearchVideogames}) {
 
     return (
         <div className="Search">
-            <input name='search' onChange={handleInputChange} value={input.search}></input>
             <button onClick={() => SearchVideogames(`?name=${input.search}`)}>S</button>
+            <input name='search' onChange={handleInputChange} value={input.search}></input>
         </div>
     )
 }

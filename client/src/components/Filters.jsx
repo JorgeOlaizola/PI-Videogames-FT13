@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { getVideogames, orderByName, orderByRating } from '../actions/actions'
 import './styles/Filters.css'
 
 const Conteiner = styled.div`
@@ -16,28 +14,12 @@ margin: 10px;
 border-radius: 25px;
 `
 
-function Filters({orderRating, orderName, getVideogames}) {
+export default function Filters() {
     return (
         <Conteiner>
         <FilterBtn>
         <Link to="/home/addVideoGame" className="Btn">ADD VIDEOGAME</Link>
         </FilterBtn>
-        <FilterBtn>
-           <button className="Btn" onClick={() => orderName()}>ORDER BY NAME</button>
-        </FilterBtn>
-        <FilterBtn>
-           <button className="Btn" onClick={() => orderRating()}>ORDER BY RATING</button>
-        </FilterBtn>
         </Conteiner>
     )
 }
-
-const mapDispatchToProps = function (dispatch) {
-    return{
-        orderByName: () => dispatch(orderByName()),
-        orderByRating: () => dispatch(orderByRating()),
-        getVideogames: (q) => dispatch(getVideogames(q))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(Filters)
