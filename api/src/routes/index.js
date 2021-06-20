@@ -92,7 +92,6 @@ router.get('/videogames', async function (req, res) {
 
 router.get('/videogames/:id', async (req, res) => {
     if(req.params.id){
-        console.log(req.params.id)
         //Compara con la DB
         const DBGame = await Videogame.findByPk(req.params.id,
             {
@@ -105,7 +104,7 @@ router.get('/videogames/:id', async (req, res) => {
                         }    
             }
             })
-            .catch(() => console.log(req.params.id))
+            .catch(() => console.log('It isn´t on the DB'))
             if(DBGame) return res.send(DBGame)
 
         //Compara con la API
