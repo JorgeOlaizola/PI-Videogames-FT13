@@ -1,7 +1,7 @@
 import React, {} from 'react'
 import './styles/Pagination.css'
 
-export default function Pagination({ cardPerPage, totalCards, paginate }) {
+export default function Pagination({ cardPerPage, totalCards, paginate, currentPage }) {
     const pageNumbers = [];
 
     for(let i = 1; i <= Math.ceil(totalCards / cardPerPage ); i++){
@@ -10,7 +10,8 @@ export default function Pagination({ cardPerPage, totalCards, paginate }) {
     return (
         <div className="pagpos">
             <ul>
-                {pageNumbers && pageNumbers.map(p => <li><button onClick={() => paginate(p)}>{p}</button></li>)}
+                {pageNumbers && pageNumbers.map(p => 
+                p === currentPage ? <li><button  className="current" onClick={() => paginate(p)}>{p}</button></li> : <li><button onClick={() => paginate(p)}>{p}</button></li>)}
             </ul>
         </div>
     )

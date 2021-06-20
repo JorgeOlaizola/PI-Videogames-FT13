@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import SearchBar from './SearchBar'
 import './styles/FiltersSearch.css'
 
-function DFilters({SearchVideogames, order, genres}) {
+function FiltersSearch({SearchVideogames, order, genres}) {
 
     const handleSelect = (e) => {
         console.log(e.target.value)
@@ -37,4 +37,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(DFilters)
+export default connect(mapStateToProps, null)(FiltersSearch)

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Default from './styles/default.jpg'
 import styled from 'styled-components'
 
 const Random = styled.div`
@@ -21,7 +22,7 @@ margin-right: 30px;
 function RandonGame({ randomGame }) {
     return (
         <Random>
-            {randomGame && <Img alt="randomGame" src={`${randomGame.image}`}/>}
+            {randomGame && randomGame.image ? <Img alt="randomGame" src={`${randomGame.image}`}/> : <Img src={Default} alt="Default videogame image"/>}
             <div>
             {randomGame && <h3>Have you tried the new {randomGame.name}? Check it out!</h3>}
             

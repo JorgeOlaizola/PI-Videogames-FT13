@@ -58,6 +58,7 @@ function GameDetail({gameDetail, getGameDetail, id}) {
       }, [id]);
     return (
         <Position>
+        { gameDetail && 
         <Conteiner>
             <Title>{gameDetail && gameDetail.name}</Title>
             Genres:
@@ -72,7 +73,7 @@ function GameDetail({gameDetail, getGameDetail, id}) {
                 <p>Rating: {gameDetail.rating}</p>
                 <p>Platforms: {gameDetail.platforms && gameDetail.platforms.map(p => <div>{p.platform.name}</div>)}</p>
             </InfoCont>
-        </Conteiner>
+        </Conteiner>}
         </Position>
     )
 }

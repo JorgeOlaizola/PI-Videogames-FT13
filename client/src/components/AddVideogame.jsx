@@ -120,7 +120,7 @@ function  AddVideoGame({addVideogame, genres}) {
         <input  placeholder="Tell us which platforms are available for this game" type="text" name="platforms" onKeyDown={handlePlatforms}/>
         {input.platforms && input.platforms.map((p) => 
         <div>
-          {p.platform.name}
+          {p.platform.name.toUpperCase()}
           <button value={p.platform.name} onClick={(e) => filterPlatform(e)}>X</button>
         </div>)}
       </div>

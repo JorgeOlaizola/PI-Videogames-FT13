@@ -35,7 +35,7 @@ function Videogames({games}) {
 
     return (
         <Conteiner>
-        <Pagination cardPerPage={cardPerPage} totalCards={games.length} paginate={paginate} />
+        <Pagination cardPerPage={cardPerPage} totalCards={games.length} paginate={paginate} currentPage={currentPage} />
           {currentCards && currentCards.map((g) => <Videogame key={g.id} name={g.name} genres={g.genres} image={g.image} id={g.id}/>)}
         </Conteiner>
     )
