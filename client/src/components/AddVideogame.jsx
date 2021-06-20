@@ -108,11 +108,11 @@ function  AddVideoGame({addVideogame, genres}) {
         <label>Rating</label>
         <div>
         <input  type="number" min="0" max="5" name="rating" onChange={handleInputChange} value={input.rating} />
-        {input.rating >= '1' && <AiTwotoneStar className="Stars"></AiTwotoneStar>}
-        {input.rating >= '2' && <AiTwotoneStar></AiTwotoneStar>}
-        {input.rating >= '3' && <AiTwotoneStar></AiTwotoneStar>}
-        {input.rating >= '4' && <AiTwotoneStar></AiTwotoneStar>}
-        {input.rating === '5' && <AiTwotoneStar></AiTwotoneStar>}
+        {input.rating >= '1' && <AiTwotoneStar className="Stars" />}
+        {input.rating >= '2' && <AiTwotoneStar />}
+        {input.rating >= '3' && <AiTwotoneStar />}
+        {input.rating >= '4' && <AiTwotoneStar />}
+        {input.rating === '5' && <AiTwotoneStar />}
         </div>
       </div>
       <div className="DInput">

@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200&family=Teko:wght@300&display=swap');
+
+.triangle{
+    width: 0;
+    height: 0px;
+    border-bottom: 170px solid #000;
+    border-left: 170px solid transparent;
+}
+
+.link{
+    width: 100px;
+    height: 3%;
+    background: linear-gradient(205deg, rgba(109,19,166,1) 0%, rgba(94,9,122,1) 35%, rgba(135,60,173,1) 100%);
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    border: 0.5px white solid;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: bolder;
+    transition: ease-out 0.5s;
+    box-shadow: inset 0 0 0 0 white;
+}
+
+.link:hover{
+    box-shadow: inset 140px 0 0 0 white;
+    color: rgba(94,9,122,1);
+    border: 1.5px rgba(94,9,122,1) solid;
+
+}
+
+.h1title{
+    font-family: 'Cairo', sans-serif;
+    font-size: 70px;
+    margin: 0;
+}
+
+.h3text{
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+}

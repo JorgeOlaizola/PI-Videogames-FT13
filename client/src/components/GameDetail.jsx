@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getGameDetail } from '../actions/actions';
+import { AiTwotoneStar } from "react-icons/ai";
 import styled from 'styled-components';
 
 const Conteiner = styled.div`
@@ -70,7 +71,18 @@ function GameDetail({gameDetail, getGameDetail, id}) {
             <InfoCont>
                 <p>Description: {gameDetail && gameDetail.description}</p>
                 <p>This game was released {gameDetail.released}</p>
-                <p>Rating: {gameDetail.rating}</p>
+                <p>Rating:
+                {gameDetail &&
+                Math.round(gameDetail.rating) >= 1 && <AiTwotoneStar/>}
+                {gameDetail &&
+                Math.round(gameDetail.rating) >= 2 && <AiTwotoneStar/>}
+                {gameDetail &&
+                Math.round(gameDetail.rating) >= 3 && <AiTwotoneStar/>}
+                {gameDetail &&
+                Math.round(gameDetail.rating) >= 4 && <AiTwotoneStar/>}
+                {gameDetail &&
+                Math.round(gameDetail.rating) === 5 && <AiTwotoneStar/>}
+                ({gameDetail.rating})</p>
                 <p>Platforms: {gameDetail.platforms && gameDetail.platforms.map(p => <div>{p.platform.name}</div>)}</p>
             </InfoCont>
         </Conteiner>}

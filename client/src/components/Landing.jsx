@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Logo from './styles/LogoHenry.png'
+import './styles/Landing.css'
 
 const Conteiner = styled.div`
 color: white;
@@ -12,21 +14,16 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 `
-const GetStarted = styled.button`
-width: 5%;
-heihgt: auto;
-`
 
-const Title = styled.h1`
-font-size: 200px;
-`
 
 export default function Landing() {
     return (
-        <Conteiner>
-            <Title>Welcome!</Title>
-            <hr/>
-           <GetStarted> <Link to="/home">Get started!</Link></GetStarted>
+        <Conteiner>        
+            <img src={Logo} alt="Logo"/>
+            <h1 className="h1title">Welcome!</h1>
+            <h3 className="h3text">This is a project designed with React, Redux, Sequelize and Express.</h3>
+            <h3 className="h3text">For development I used the video game API rawg.io</h3>
+           <Link to="/home" className="link">Get started!</Link>
         </Conteiner>
     )
 }

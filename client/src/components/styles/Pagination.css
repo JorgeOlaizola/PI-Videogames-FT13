@@ -17,10 +17,23 @@
 }
 
 .pagpos li{
-    margin: 5px;
 }
 
 .current{
-    background-color: black;
-    color: white;
+    background-color: grey;
+    width: 35px;
+    height: 35px;
+    border: 0.5px solid white;
+}
+
+.pag{
+    width: 35px;
+    height: 35px;
+    border: 0.5px solid grey;
+    border-radius: none;
+}
+
+.pag:hover{
+    background: white;
+    background-color: rgb(135, 131, 133);
 }

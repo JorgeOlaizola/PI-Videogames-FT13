@@ -6,7 +6,6 @@ import './styles/Home.css'
 import Logo from './styles/LogoHenry.png'
 
 const Header = styled.header`
-border: 4px #4d0066 solid;
 height: 30vh;
 display:flex;
 justify-content: center;

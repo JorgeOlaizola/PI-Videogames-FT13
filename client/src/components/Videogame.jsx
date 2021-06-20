@@ -10,7 +10,11 @@ export default function Videogame(props) {
            {props.image ? <img src={`${props.image}`} alt="Videogame image" className="Img"></img> : <img src={Default} alt="Videogame image" className="Img"></img>}
             <div className="title">{props.name}</div>
             <div className="infoCont">
-            {props.genres && props.genres.map(g => <p>{g.name}</p>)}
+            {props.genres && props.genres.map((g, i) => {
+            if(i < 3){
+            return <p>{g.name}</p>
+            }
+            })}
             { props.id && <button><Link to={`/home/GameDetail/${props.id}`} className="Link">GameDetail</Link></button>}
             </div>
         </div>
