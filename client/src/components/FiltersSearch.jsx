@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import SearchBar from './SearchBar'
-import './styles/DFilters.css'
+import './styles/FiltersSearch.css'
 
 function DFilters({SearchVideogames, order, genres}) {
 
@@ -11,8 +11,8 @@ function DFilters({SearchVideogames, order, genres}) {
     }
     return (
         <div className='conteiner'>
-            <select  onChange={handleSelect} label="Filters"name="" id="">
-                <option selected>Filters</option>
+            <select  onChange={handleSelect} name="" id="">
+                <option value="default" selected>Default</option>
                 <optgroup label="Alphabetic">
                     <option value="A-Z">A - Z</option>
                     <option value="Z-A">Z - A</option>

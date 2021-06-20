@@ -1,5 +1,5 @@
 import React from 'react'
-import Filters from './Filters'
+import AddButton from './AddButton'
 import Videogames from './Videogames'
 import styled from 'styled-components'
 import FiltersSearch from './FiltersSearch'
@@ -34,7 +34,7 @@ function GetGames({ getGenres, orderBy, getVideogames }) {
         <div>
                 <FiltersSearch SearchVideogames={SearchVideogames} order={order} />
                 <SourceCont>
-                    <Filters />
+                    <AddButton />
                     {change && <Videogames/>}
                 </SourceCont>
         </div>

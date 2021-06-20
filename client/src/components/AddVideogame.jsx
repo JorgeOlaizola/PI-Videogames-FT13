@@ -56,6 +56,9 @@ function  AddVideoGame({addVideogame, genres}) {
   }
 
   const handlePlatforms = function(e) {
+    if(!e.target.value){
+      return
+    }
     if(e.key === 'Enter'){
       e.preventDefault()
       if(!input.platforms.find(p => p.platform.name.toLowerCase() === e.target.value.toLowerCase())){
@@ -71,7 +74,7 @@ function  AddVideoGame({addVideogame, genres}) {
   const filterPlatform = function(e) {
     setInput({
       ...input,
-      platforms: input.platforms.filter(p => p.find(plat => plat.platform.name === e.target.value))
+      platforms: input.platforms.filter(p => p.platform.name !== e.target.value)
     })
   }
 
@@ -114,11 +117,11 @@ function  AddVideoGame({addVideogame, genres}) {
       </div>
       <div className="DInput">
         <label className="Label">Platforms</label>
-        <input  placeholder="Tell us which platforms are available for this game" type="text" name="platforms" onKeyDown={handlePlatforms} required/>
-        {input.platforms.length && input.platforms.map((p) => 
+        <input  placeholder="Tell us which platforms are available for this game" type="text" name="platforms" onKeyDown={handlePlatforms}/>
+        {input.platforms && input.platforms.map((p) => 
         <div>
           {p.platform.name}
-          <button value={p.platform.name} onClick={() => filterPlatform}>X</button>
+          <button value={p.platform.name} onClick={(e) => filterPlatform(e)}>X</button>
         </div>)}
       </div>
       <div className="DInput">

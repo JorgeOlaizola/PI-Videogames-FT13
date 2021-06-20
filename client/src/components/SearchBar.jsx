@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import './styles/SearchBar.css'
 import { getVideogames } from '../actions/actions'
+import { FcSearch } from "react-icons/fc";
 
 function SearchBar({getVideogames, SearchVideogames}) {
     const [input, setInput] = React.useState({
@@ -17,7 +18,7 @@ function SearchBar({getVideogames, SearchVideogames}) {
 
     return (
         <div className="Search">
-            <button onClick={() => SearchVideogames(`?name=${input.search}`)}>S</button>
+            <button onClick={() => SearchVideogames(`?name=${input.search}`)}><FcSearch /></button>
             <input name='search' onChange={handleInputChange} value={input.search}></input>
         </div>
     )
