@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Default from './styles/default.jpg'
 import styled from 'styled-components'
-import './styles/randomGame.css'
+import './styles/RandomGame.css'
 
 const Random = styled.div`
 color: white;

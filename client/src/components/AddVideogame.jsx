@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React from 'react';
-import Videogame from './Videogame'
+import Videogame from './Videogame';
 import { connect } from 'react-redux';
-import { addVideogame } from '../actions/actions'
-import './styles/AddVideogame.css'
+import { addVideogame } from '../actions/actions';
+import './styles/AddVideogame.css';
 import { AiTwotoneStar } from "react-icons/ai";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 
 function  AddVideoGame({addVideogame, genres}) {
@@ -118,11 +118,13 @@ function  AddVideoGame({addVideogame, genres}) {
       <div className="DInput">
         <label className="Label">Platforms</label>
         <input  placeholder="Tell us which platforms are available for this game" type="text" name="platforms" onKeyDown={handlePlatforms}/>
+        <div className="ptConteiner">
         {input.platforms && input.platforms.map((p) => 
-        <div>
+        <span className="ptDiv">
           {p.platform.name.toUpperCase()}
-          <button value={p.platform.name} onClick={(e) => filterPlatform(e)}>X</button>
-        </div>)}
+          <button className="ptBtn"value={p.platform.name} onClick={(e) => filterPlatform(e)}>X</button>
+        </span>)}
+        </div>
       </div>
       <div className="DInput">
         <label className="LabelGenres">Genres</label>
