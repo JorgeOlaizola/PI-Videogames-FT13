@@ -9,6 +9,7 @@ import { getGenres, orderBy, getVideogames } from '../actions/actions'
 const SourceCont = styled.div`
 display:flex;
 margin: 50px;
+margin-top: 0px;
 `
 
 function GetGames({ getGenres, orderBy, getVideogames }) {

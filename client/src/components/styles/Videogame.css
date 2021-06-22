@@ -15,6 +15,10 @@ text-align: center;
 background-color: black;
 }
 
+.Conteiner:hover {
+    border: 1px solid white;
+}
+
 .infoCont {
     display: flex;
     flex-direction: column;
@@ -28,6 +32,7 @@ background-color: black;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;
+    font-family: 'Cairo', sans-serif;
 }
 
 .Conteiner:hover .infoCont {
@@ -57,9 +62,17 @@ background-color: black;
     
 }
 
+.Conteiner:hover .title {
+    top: 0px;
+}
+
+.Conteiner:hover .Img {
+    opacity: 50%;
+}
+
 .Img {
-width: 100%;
-height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .Link {
@@ -73,19 +86,6 @@ height: 100%;
     margin-bottom: 10px;
     border-radius: 0.5rem;
     border: 1px solid white;
-    background: rgba(24,9,122,1);
+    background: rgba(83,34,167,1);
     transition: ease-in 0.5s;
-}
-
-.LinkButton:hover {
-    font-size: 1rem;
-    box-shadow: inset 0 0 0 120px rgba(83,34,167,1);
-}
-
-.Conteiner:hover .title {
-top: -1px;
-}
-
-.Conteiner:hover .Img {
-    opacity: 50%;
 }

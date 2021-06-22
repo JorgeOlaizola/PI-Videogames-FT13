@@ -9,7 +9,7 @@ const Random = styled.div`
 color: white;
 background: linear-gradient(0deg, rgba(35,7,131,1) 0%, rgba(24,9,112,1) 60%, rgba(35,7,131,1) 100%);
 margin-top: 40px;
-width: 35%;
+width: 40%;
 height: 20vh;
 display: flex;
 align-items: center;
