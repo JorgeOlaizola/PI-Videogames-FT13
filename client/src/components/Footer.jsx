@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles/Footer.css'
-import { FaLinkedin } from "react-icons/fa";
-import { SiMicrosoftoutlook } from "react-icons/si";
+import { FaLinkedin, FaReact } from "react-icons/fa";
+import { SiMicrosoftoutlook, SiRedux, SiJavascript, SiPostgresql, SiCss3, SiHtml5 } from "react-icons/si";
 import { FcCellPhone } from "react-icons/fc";
 
 
@@ -13,6 +13,11 @@ export default function Footer() {
                 <p className="ftPar">Linked In <a href="https://www.linkedin.com/in/jorge-leandro-olaizola-579b25157/"><FaLinkedin/></a></p>
                 <p className="ftPar">Outlook: jorgelolaizola@hotmail.com <a href="https://outlook.live.com/"><SiMicrosoftoutlook/></a></p>
                 <p className="ftPar">CellPhone: (+54) 11-6734-0113 <FcCellPhone/></p>
+            </div>
+            <div className="ftStack">
+                <h4>Technology stack:</h4>
+                <p><SiJavascript/><FaReact/><SiRedux/><SiPostgresql/><SiCss3/><SiHtml5/></p>
+
             </div>
         </footer>
     )

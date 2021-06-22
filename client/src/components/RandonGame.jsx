@@ -13,11 +13,11 @@ width: 35%;
 height: 20vh;
 display: flex;
 align-items: center;
-border-radius: 0 2rem 2rem 0;
+border-radius: 0 1rem 1rem 0;
 border: 1px solid white;
 `
 const Img = styled.img`
-width: 25%;
+width: 33%;
 height: 100%;
 border-right: 2px white solid;
 margin-right: 30px;
@@ -31,7 +31,6 @@ function RandonGame({ randomGame }) {
             {randomGame && <h3 className="rgInfo">Have you tried the new <span className="rgTitle">{randomGame.name}</span>?</h3>}
             {randomGame && <Link className="gdLink" to={`/home/GameDetail/${randomGame.id}`}>Check it out!</Link>}
             </div>
-            
         </Random>
     )
 }

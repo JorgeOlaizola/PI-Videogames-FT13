@@ -11,7 +11,7 @@ function FiltersSearch({SearchVideogames, order, genres}) {
     }
     return (
         <div className='conteiner'>
-            <select  onChange={handleSelect} name="" id="">
+            <select  className="selectCont" onChange={handleSelect} name="" id="">
                 <option value="default" selected>Default</option>
                 <optgroup label="Alphabetic">
                     <option value="A-Z">A - Z</option>

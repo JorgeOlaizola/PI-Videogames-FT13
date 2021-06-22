@@ -1,0 +1,93 @@
+.GDConteiner {
+    width: 80%;
+    height: auto;
+    background: linear-gradient(205deg, rgba(83,34,167,1) 0%, rgba(24,9,122,1) 35%, rgba(74,39,187,1) 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    box-shadow: 5px 10px black;
+    font-family: 'Cairo', sans-serif;
+    text-shadow: 2px 2px 4rem white;
+}
+
+.GDPosition {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.GDTitle {
+    font-size: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 0px;
+}
+
+.GDBoxConteiner {
+    display: flex;
+    padding: 4rem;
+    height: auto;
+}
+
+.GD1Box {
+    width: 65%;
+    height: auto;
+    border: 1px solid white;
+}
+
+.GD2Box {
+    width: 30%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 2rem;
+}
+
+.GDGenres {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+
+}
+
+.GDInfoCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    text-shadow: 2px 2px 1  rem black;
+}
+
+.GDExtraInfo {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.GDSizeBold {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.GDPt{
+    width: 50%;
+}
+
+.GDPtCont {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

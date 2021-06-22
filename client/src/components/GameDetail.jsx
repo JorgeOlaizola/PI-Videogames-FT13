@@ -2,91 +2,52 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { getGameDetail } from '../actions/actions';
 import { AiTwotoneStar } from "react-icons/ai";
-import styled from 'styled-components';
-
-const Conteiner = styled.div`
-width: 75%;
-height: auto;
-background: linear-gradient(205deg, rgba(83,34,167,1) 0%, rgba(24,9,122,1) 35%, rgba(74,39,187,1) 100%);
-color: white;
-display: flex;
-flex-direction: column;
-align-items: center;
-border-radius: 1rem;
-box-shadow: 5px 10px black;
-
-`
-
-const Img = styled.img`
-width: 70%;
-height: auto;
-`
-
-const InfoCont = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-margin: 10px;
-`
-
-const Title = styled.h2`
-text-transform: capitalize;
-font-family: Arial, Helvetica, sans-serif;
-`
-
-const Genres = styled.div`
-display: flex;
-text-align: center;
-flex-direction: raw;
-justify-content: space-around;
-width: 30%;
-margin-bottom: 20px;
-`
-
-const Position = styled.div`
-margin-top: 30px;
-margin-bottom: 50px;
-width: 100%;
-height: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-`
+import './styles/GameDetail.css'
 
 function GameDetail({gameDetail, getGameDetail, id}) {
     React.useEffect(() => {
        getGameDetail(id)
       }, [id]);
     return (
-        <Position>
-        { gameDetail && 
-        <Conteiner>
-            <Title>{gameDetail && gameDetail.name}</Title>
-            Genres:
-            <Genres>
-            {gameDetail.genres && gameDetail.genres.map(g => <div>{g.name}</div>)}
-            </Genres>
-            <Img src={`${gameDetail.image}`} alt='Videogame image'></Img>
-            <hr/>
-            <InfoCont>
-                <p>Description: {gameDetail && gameDetail.description}</p>
-                <p>This game was released {gameDetail.released}</p>
-                <p>Rating:
-                {gameDetail &&
-                Math.round(gameDetail.rating) >= 1 && <AiTwotoneStar/>}
-                {gameDetail &&
-                Math.round(gameDetail.rating) >= 2 && <AiTwotoneStar/>}
-                {gameDetail &&
-                Math.round(gameDetail.rating) >= 3 && <AiTwotoneStar/>}
-                {gameDetail &&
-                Math.round(gameDetail.rating) >= 4 && <AiTwotoneStar/>}
-                {gameDetail &&
-                Math.round(gameDetail.rating) === 5 && <AiTwotoneStar/>}
-                ({gameDetail.rating})</p>
-                <p>Platforms: {gameDetail.platforms && gameDetail.platforms.map(p => <div>{p.platform.name}</div>)}</p>
-            </InfoCont>
-        </Conteiner>}
-        </Position>
+        <div className="GDPosition">
+            { gameDetail && 
+            <div className="GDConteiner">
+                <p className="GDTitle">{gameDetail && gameDetail.name}</p>
+                {/* Box conteiner */}
+                <div className="GDBoxConteiner">
+                    {/* First box (1/2) */}
+                    <img className="GD1Box" src={`${gameDetail.image}`} alt='Videogame image' />
+                    {/* Second box (2/2)*/}
+                    <div className="GD2Box">
+                        <div className="GDGenres">
+                            <p className="GDSizeBold">Genres</p>
+                            <p style={{ margin: 0, marginBottom: '10px' }}>{gameDetail.genres && gameDetail.genres.map(g => <p style={{ margin: 0 }}>{g.name}</p>)}</p>
+                        </div>
+                        <div className="GDInfoCont">
+                            <span className="GDSizeBold">Description</span>
+                            <p>{gameDetail && gameDetail.description}</p>
+                            <p>This game was released <span style={{ fontWeight: 'bolder' }}>{gameDetail.released}</span></p>
+                        </div>
+                    </div>
+                </div>
+                {/* Extra info cont */}
+                <div className="GDExtraInfo">
+                            <p><span style={{ fontWeight: 'bolder' }}>Rating: </span>
+                            {gameDetail &&
+                            Math.round(gameDetail.rating) >= 1 && <AiTwotoneStar/>}
+                            {gameDetail &&
+                            Math.round(gameDetail.rating) >= 2 && <AiTwotoneStar/>}
+                            {gameDetail &&
+                            Math.round(gameDetail.rating) >= 3 && <AiTwotoneStar/>}
+                            {gameDetail &&
+                            Math.round(gameDetail.rating) >= 4 && <AiTwotoneStar/>}
+                            {gameDetail &&
+                            Math.round(gameDetail.rating) === 5 && <AiTwotoneStar/>}
+                            ({' ' + gameDetail.rating + ' '})</p>
+                            <div className="GDPt"><span style={{ fontWeight: 'bolder' }}>Platforms:</span> <div className="GDPtCont">{gameDetail.platforms && gameDetail.platforms.map(p => <span>{p.platform.name}</span>)}</div></div>
+                </div>            
+            </div>}
+        </div>
     )
 }
 

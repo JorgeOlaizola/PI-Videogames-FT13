@@ -1,3 +1,33 @@
-.Search{
-    margin: 0px 60px;
+.Search {
+    margin: 3% 150px;
+    position: relative;
+}
+
+.searchInput {
+    box-shadow: 0 10px 25px #000;
+    font-size: 0.75rem;
+    padding: 0.5em 1em;
+    width: 180px;
+    color: white;
+    background: rgba(24,9,122,1);
+    font-family: 'Cairo', sans-serif;
+    border: 1px solid white;
+}
+
+.searchInput {
+    border: 1px solid white;
+}
+
+.searchButton {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    background: #09032E;
+    width: 20%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.searchButton:hover {
+    border: 1px solid white;
 }
