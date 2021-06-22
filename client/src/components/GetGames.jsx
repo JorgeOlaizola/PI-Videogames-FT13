@@ -1,5 +1,4 @@
 import React from 'react'
-import AddButton from './AddButton'
 import Videogames from './Videogames'
 import styled from 'styled-components'
 import FiltersSearch from './FiltersSearch'
@@ -8,8 +7,8 @@ import { getGenres, orderBy, getVideogames } from '../actions/actions'
 
 const SourceCont = styled.div`
 display:flex;
-margin: 50px;
 margin-top: 0px;
+width: 95%;
 `
 
 function GetGames({ getGenres, orderBy, getVideogames }) {
@@ -35,7 +34,6 @@ function GetGames({ getGenres, orderBy, getVideogames }) {
         <div>
                 <FiltersSearch SearchVideogames={SearchVideogames} order={order} />
                 <SourceCont>
-                    <AddButton />
                     {change && <Videogames/>}
                 </SourceCont>
         </div>

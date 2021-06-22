@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import Default from './styles/default.jpg'
 import Videogame from './Videogame';
 import { connect } from 'react-redux';
 import { addVideogame } from '../actions/actions';
@@ -134,11 +135,17 @@ function  AddVideoGame({addVideogame, genres}) {
         </select>
       </div>
       </div>
-      <div className="Preview">
+      <div className="PWPreview">
+        {/* Preview */}
         <label>Card preview</label>
-      <Videogame name={input.name} genres={input.genres} image={input.image}/>
+      <div className="PWConteiner">
+           {input.image ? <img src={`${input.image}`} alt="Videogame image" className="PWImg"></img> : <img src={Default} alt="Videogame image" className="PWImg"></img>}
+            <div className="PWtitle">{input.name}</div>
+            <div className="PWinfoCont">
+            </div>
       </div>
-      <input className="Submit" type="submit" value="Submit game" />
+      </div>
+      <input className="AVSubmit" type="submit" value="Submit game" />
     </form>
     </div>
     

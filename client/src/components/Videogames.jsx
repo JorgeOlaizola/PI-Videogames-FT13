@@ -11,7 +11,7 @@ justify-content: center;
 padding: 50px;
 padding-top: 70px;
 flex-wrap: wrap;
-width: 65%;
+width: 100%;
 height: 90%; 
 background: linear-gradient(205deg, rgba(83,34,167,1) 0%, rgba(24,9,122,1) 35%, rgba(74,39,187,1) 100%);
 margin-left: 100px;

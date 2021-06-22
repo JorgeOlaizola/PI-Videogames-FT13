@@ -5,6 +5,7 @@
     margin: auto;
     padding: 30px;
     position: relative;
+    border-radius: 1rem;
     flex-direction: row;
     align-items: center;
     margin-bottom: 10px;
@@ -15,7 +16,7 @@
 
 .Data{
     display: flex;
-    width: 70%;
+    width: 60%;
     margin: auto;
     padding: 30px;
     flex-direction: column;
@@ -42,14 +43,11 @@ input:invalid {
     border: 1px solid red;
   }
   
-  input:valid {
+input:valid {
     border: 2px solid black;
-  }
-
-.Preview{
-    margin-right: 10%;
 }
 
+  
 .Comment{
     color: grey;
     font-size:small;
@@ -57,37 +55,45 @@ input:invalid {
     align-items: flex-start;
     margin-bottom: 8px;
 }
-
+    
 .Image{
     width: auto;
 }
-
+    
 .Rating{
     width: auto;
     align-items: flex-start;
 }
-
+    
 .Stars{
     margin-left: 10px;
 }
-
-.Submit{
+    
+.AVSubmit{
     position: absolute;
     left: 50%;
     top: 95%;
+    border: none;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(24,9,122,1);
+    font-family: 'Cairo', sans-serif;
 }
-
+    
 .Label{
     display: flex;
     align-items: flex-start;
     margin-bottom: 5px;
 }
-
+    
 .LabelGenres{
     display: flex;
     align-items: flex-start;
 }
-
+    
 .ptDiv{
     background-color: white;
     color: black;
@@ -100,9 +106,9 @@ input:invalid {
     justify-content: space-between;
     align-items: center;
     text-align: center;
-
+        
 }
-
+    
 .ptConteiner{   
     display: flex;
     justify-content: center;
@@ -114,4 +120,77 @@ input:invalid {
     background-color: #C72426;
     color: white;
     border-radius: 100%;
+}
+
+
+.PWPreview{
+    margin-right: 10%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.PWConteiner {
+    width: 100%;
+    height: 300px;
+    border: 1px black solid;
+    color: white;
+    background-image: black;
+    margin: 10px;
+    border-radius: 2,5rem 2,5rem; 
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: black;
+}
+
+.PWImg {
+    width: 100%;
+    height: 100%;
+}
+
+.PWConteiner:hover .PWImg {
+    opacity: 50%;
+}
+
+.PWtitle {
+    position: absolute;
+    top: 70%;
+    font-size: 25px;
+    text-shadow: 10px 10px 20px black;
+    background: linear-gradient(205deg, rgba(0,0,0,1) 0%, rgba(45,42,55,0.5382528011204482) 50%, rgba(0,0,0,1) 100%);
+    width: 100%;
+    height: auto;
+    padding: 10px 0px;
+    -webkit-text-stroke: 1px black;
+    transition: all 0.6s ease-out;
+}
+
+.PWConteiner:hover .PWtitle {
+    top: 0px;
+}
+
+
+.PWinfoCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background: linear-gradient(205deg, rgba(0,0,0,1) 0%, rgba(45,42,55,0.5382528011204482) 50%, rgba(0,0,0,1) 100%);
+    width: 100%;
+    height: 30%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+    font-family: 'Cairo', sans-serif;
+}
+
+.PWConteiner:hover .PWinfoCont {
+    visibility: visible;
+    opacity: 1;
+    bottom: 0px;
 }

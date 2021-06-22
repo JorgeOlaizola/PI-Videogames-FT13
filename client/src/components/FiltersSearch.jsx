@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import AddButton from './AddButton'
 import SearchBar from './SearchBar'
 import './styles/FiltersSearch.css'
 
@@ -11,6 +12,7 @@ function FiltersSearch({SearchVideogames, order, genres}) {
     }
     return (
         <div className='conteiner'>
+            <AddButton/>
             <select  className="selectCont" onChange={handleSelect} name="" id="">
                 <option value="default" selected>Default</option>
                 <optgroup label="Alphabetic">

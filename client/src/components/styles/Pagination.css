@@ -20,7 +20,8 @@
 }
 
 .current{
-    background-color: grey;
+    background-color:rgba(83,34,167,1);
+    color: white;
     width: 35px;
     height: 35px;
     border: 0.5px solid white;
@@ -29,11 +30,13 @@
 .pag{
     width: 35px;
     height: 35px;
+    color: white;
     border: 0.5px solid grey;
+    background-color: rgba(24,9,122,1);
     border-radius: none;
 }
 
 .pag:hover{
     background: white;
-    background-color: rgb(135, 131, 133);
+    background-color: rgba(135, 131, 133, 0.363);
 }

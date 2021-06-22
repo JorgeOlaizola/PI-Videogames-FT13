@@ -1,12 +1,14 @@
 .ABConteiner {
-    width: 20%;
-    height: 100px;
+    width: 10%;
+    height: 30%;
     display:flex;
     justify-content: center;
     align-items: center;    
     box-shadow: 15px 15px 15px 15px rgba(0, 0, 0, 0.2);
     background: rgba(24,9,122,1);
     border: 1px solid black;
+    position: absolute;
+    left: 125px;
 }
 
 .ABConteiner:hover{
@@ -19,7 +21,6 @@
     box-shadow: -3px 39px 97px -73px rgba(0,0,0,0.75) inset;
     -webkit-box-shadow: -3px 39px 97px -73px rgba(0,0,0,0.75) inset;
     -moz-box-shadow: -3px 39px 97px -73px rgba(0,0,0,0.75) inset;
-    animation: BtnHover;
 }
 
 .Btn{
@@ -33,26 +34,7 @@
     height: 100%;
     background: none;
     font-family: 'Cairo', sans-serif;
-    transition: ease-out 0.3s;
-    font-size: 1.25rem;
 }
 
-@keyframes BtnHover {
-    0%{
-        box-shadow: -3px -4px 97px -73px rgba(255,255,255,0.75) inset;
-        -webkit-box-shadow: -3px -4px 97px -73px rgba(255,255,255,0.75) inset;
-        -moz-box-shadow: -3px -4px 97px -73px rgba(255,255,255,0.75) inset;
-    }
-    50%{
-        box-shadow: -3px 39px 97px -73px rgba(0,0,0,0.75) inset;
-        -webkit-box-shadow: -3px 39px 97px -73px rgba(0,0,0,0.75) inset;
-        -moz-box-shadow: -3px 39px 97px -73px rgba(0,0,0,0.75) inset;
-    }
-    100%{
-        box-shadow: -3px -4px 97px -73px rgba(255,255,255,0.75) inset;
-        -webkit-box-shadow: -3px -4px 97px -73px rgba(255,255,255,0.75) inset;
-        -moz-box-shadow: -3px -4px 97px -73px rgba(255,255,255,0.75) inset;
-    }
-}
 
 
