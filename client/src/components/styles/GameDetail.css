@@ -48,6 +48,7 @@
     align-items: center;
     flex-direction: column;
     padding-left: 2rem;
+    text-align: center;
 }
 
 .GDGenres {
