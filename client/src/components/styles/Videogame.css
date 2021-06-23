@@ -1,5 +1,6 @@
 .Conteiner {
     width: 18%;
+    min-width: 230px;
     height: 350px;
     border: 1px black solid;
     color: white;

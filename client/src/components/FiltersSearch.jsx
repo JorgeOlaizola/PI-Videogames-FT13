@@ -7,7 +7,6 @@ import './styles/FiltersSearch.css'
 function FiltersSearch({SearchVideogames, order, genres}) {
 
     const handleSelect = (e) => {
-        console.log(e.target.value)
         order(e.target.value)
     }
     return (
@@ -25,8 +24,7 @@ function FiltersSearch({SearchVideogames, order, genres}) {
                 </optgroup>
                 <optgroup label="Genres">
                     {genres && genres.map(g => <option value={g.name}>{g.name}</option>)}
-                </optgroup>
-                
+                </optgroup>                
             </select>
             <SearchBar SearchVideogames={SearchVideogames} />
         </div>

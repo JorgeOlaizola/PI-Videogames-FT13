@@ -122,8 +122,8 @@ function  AddVideoGame({addVideogame, genres}) {
         <div className="ptConteiner">
         {input.platforms && input.platforms.map((p) => 
         <span className="ptDiv">
-          {p.platform.name.toUpperCase()}
-          <button className="ptBtn"value={p.platform.name} onClick={(e) => filterPlatform(e)}>X</button>
+          <span style={{ paddingRight: '10px'}}>{p.platform.name.toUpperCase()}</span>
+          <button className="ptBtn" value={p.platform.name} onClick={(e) => filterPlatform(e)}>X</button>
         </span>)}
         </div>
       </div>

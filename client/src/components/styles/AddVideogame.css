@@ -95,11 +95,10 @@ input:valid {
 }
     
 .ptDiv{
-    background-color: white;
-    color: black;
-    width: auto ;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.109);
+    width: auto;
     padding: 0.1rem 0.5rem 0.1rem 0.5rem;
-    border-radius: 10%;
     border: 1px solid grey;
     margin: 15px 5px 0px 5px;
     display: flex;
@@ -117,9 +116,8 @@ input:valid {
 }
 
 .ptBtn{
-    background-color: #C72426;
     color: white;
-    border-radius: 100%;
+    background-color: rgba(24,9,122,1);;
 }
 
 
