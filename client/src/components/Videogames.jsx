@@ -12,12 +12,24 @@ padding: 50px;
 padding-top: 70px;
 flex-wrap: wrap;
 width: 100%;
+max-width: 80%;
 height: 90%; 
 background: linear-gradient(205deg, rgba(83,34,167,1) 0%, rgba(24,9,122,1) 35%, rgba(74,39,187,1) 100%);
-margin-left: 100px;
+margin: auto;
 border-radius: 25px;
 box-shadow: 15px 15px 15px 15px rgba(0, 0, 0, 0.2);
 position: relative;
+
+@media (max-width: 629px) {
+    padding: 10px;
+    padding-top: 50px;
+}
+
+@media (max-width: 285px) {
+    max-width: 100%;
+    padding-top: 80px;
+    border-radius: 0;
+}
 `
 
 

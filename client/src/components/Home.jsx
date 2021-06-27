@@ -6,7 +6,7 @@ import './styles/Home.css'
 import Logo from './styles/LogoHenry.png'
 
 const Header = styled.header`
-height: 30vh;
+height: 35%;
 display:flex;
 justify-content: center;
 align-items: center;
@@ -15,19 +15,24 @@ const RandomCont = styled.div`
 display:flex;
 justify-content: center;
 align-items: center;
+height: 30%;
+`
+
+const HomeDiv = styled.div`
+width: 100%;
+height: 80%;
 `
 
 
 export default function Home() {
     return (
-        <div>
+        <HomeDiv>
             <Header className="DHeader">
                 <Link to="/home"><img src={Logo} alt='Henry Videogames'></img></Link>
             </Header>
             <RandomCont>
              <RandonGame/>
             </RandomCont>
-            
-        </div>
+        </HomeDiv>
     )
 }

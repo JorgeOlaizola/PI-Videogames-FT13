@@ -1,5 +1,26 @@
+.InfoImg{
+    width: 40%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .InfoCont{
-  width: 80%;
+    width: 60%;
+}
+
+@media (max-width: 400px){
+    .InfoImg {
+        width: 100%;
+    }
+
+    .InfoCont {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 0.75rem;
+    }
 }
 
 .rgTitle {
@@ -27,6 +48,5 @@
 }
 
 .rgInfo {
-    margin-bottom: 40px;
     font-family: 'Cairo', sans-serif;
 }

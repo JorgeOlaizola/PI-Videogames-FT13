@@ -14,6 +14,28 @@
     background-color: black;
 }
 
+@media (max-width: 629px) {
+    .Conteiner{
+        margin: 0;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 579px) {
+    .Conteiner {
+        max-height: 300px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 300px) {
+    .Conteiner {
+        max-height: 300px;
+        width: 230px;
+    }
+}
+
+
 .Conteiner:hover {
     border: 1px solid white;
 }
@@ -74,15 +96,16 @@
 }
 
 .Link {
-    width: 100%;
-    height: 100%;
+    width: 30%;
+    height: 35%;
     text-decoration: none;
-    color: white;
+    
 }
 
 .LinkButton {
-    width: 30%;
-    height: 35%;
+    width: 100%;
+    height: 100%;
+    color: white;
     margin-bottom: 10px;
     border-radius: 0.5rem;
     border: 1px solid white;
@@ -94,9 +117,7 @@
 .LinkButton:hover {
     box-shadow: inset 120px 0 0 0 white;
     border: 2px solid rgba(83,34,167,1);
-}
-
-.LinkButton:hover .Link {
-    color: rgba(83,34,167,1);
     font-weight: bolder;
+    color: rgba(83,34,167,1);
+    cursor: pointer;
 }

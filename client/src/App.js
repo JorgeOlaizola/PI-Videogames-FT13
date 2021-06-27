@@ -18,7 +18,6 @@ function App() {
       <Route path='/home/addVideogame'><AddVideoGame/></Route>
       <Route path='/home/GameDetail/:id' render={({match}) => <GameDetail id={match.params.id}/>}/>
       <Route path='/home'><Footer/></Route>
-      
     </div>
     
   );

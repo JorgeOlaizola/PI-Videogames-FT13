@@ -81,6 +81,7 @@ input:valid {
     align-items: center;
     background: rgba(24,9,122,1);
     font-family: 'Cairo', sans-serif;
+    cursor: pointer;
 }
     
 .Label{

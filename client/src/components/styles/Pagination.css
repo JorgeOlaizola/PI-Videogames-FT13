@@ -8,13 +8,23 @@
     margin-bottom: 10px;
 }
 
+@media (max-width: 741px) {
+    .pagpos {
+        top: 10px;
+    }
+
+}
+
 .pagpos ul{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     list-style: none;
     margin: 0px;
     padding: 0px;
+    max-width: 250px;
 }
+
 
 .pagpos li{
 }

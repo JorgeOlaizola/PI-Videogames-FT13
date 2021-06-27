@@ -8,7 +8,13 @@ import { getGenres, orderBy, getVideogames } from '../actions/actions'
 const SourceCont = styled.div`
 display:flex;
 margin-top: 0px;
-width: 95%;
+width: 100%;
+`
+const FiltersDiv = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
 `
 
 function GetGames({ getGenres, orderBy, getVideogames }) {
@@ -31,12 +37,12 @@ function GetGames({ getGenres, orderBy, getVideogames }) {
         setChange(false)
     }
     return (
-        <div>
+        <FiltersDiv>
                 <FiltersSearch SearchVideogames={SearchVideogames} order={order} />
                 <SourceCont>
                     {change && <Videogames/>}
                 </SourceCont>
-        </div>
+        </FiltersDiv>
     )
 }
 const mapDispatchToProps = (dispatch) => {

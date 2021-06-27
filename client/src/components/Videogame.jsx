@@ -17,7 +17,7 @@ export default function Videogame(props) {
             }
             })}
             </div>
-            { props.id && <button className="LinkButton"><Link to={`/home/GameDetail/${props.id}`} className="Link">Detail</Link></button> }
+            { props.id && <Link to={`/home/GameDetail/${props.id}`} className="Link"><button className="LinkButton">Detail</button></Link> }
             </div>
         </div>
     )

@@ -34,3 +34,9 @@
     top: 3rem;
     right: 8rem;
 }
+
+@media (max-width: 550px) {
+    .ftStack {
+        display: none;
+    }
+}

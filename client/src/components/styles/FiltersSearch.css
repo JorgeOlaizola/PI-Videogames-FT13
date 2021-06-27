@@ -1,21 +1,31 @@
 .conteiner{
     width: 100%;
     margin-top: 10px;
+    padding: 2rem 0rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: row;
-    position: relative;    
+    flex-direction: row;    
 }
 
 .selectCont{
     box-shadow: 0 10px 25px #000;
-    font-size: 0.75rem;
     padding: 0.5em 1em;
     color: white;
+    font-size: 1rem;
     background: rgba(24,9,122,1);
     font-family: 'Cairo', sans-serif;
     border: 1px solid black;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    .conteiner {
+        flex-direction: column;
+    }
+    .selectCont {
+        font-size: 0.75rem;
+    }
 }
 
 .selectCont:hover {
