@@ -10,7 +10,7 @@ export default function Footer() {
         <footer className="ftConteiner">
             <div className="ftInfo">
                 <h4>Contact</h4>
-                <p className="ftPar">Linked In <a href="https://www.linkedin.com/in/jorge-leandro-olaizola-579b25157/"><FaLinkedin/></a></p>
+                <p className="ftPar">Linked In <a href="https://www.linkedin.com/in/jorge-leandro-olaizola"><FaLinkedin/></a></p>
                 <p className="ftPar">Outlook: jorgelolaizola@hotmail.com <a href="https://outlook.live.com/"><SiMicrosoftoutlook/></a></p>
                 <p className="ftPar">GitHub: JorgeOlaizola <a href="https://github.com/JorgeOlaizola"><SiGithub/></a></p>
                 <p className="ftPar">CellPhone: (+54) 11-6734-0113 <FcCellPhone/></p>

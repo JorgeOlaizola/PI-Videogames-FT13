@@ -23,6 +23,7 @@ export default function Landing() {
             <h1 className="h1title">Welcome!</h1>
             <h3 className="h3text">This is a project designed with React, Redux, Sequelize and Express.</h3>
             <h3 className="h3text">For development I used the video game API rawg.io</h3>
+            <h3 className="h3text">This app is web responsive.</h3>
            <Link to="/home" className="link">Get started!</Link>
         </Conteiner>
     )

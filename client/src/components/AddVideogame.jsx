@@ -38,7 +38,6 @@ function  AddVideoGame({addVideogame, genres}) {
       ...input,
       image: response.data.secure_url
       }))
-    
   }
 
   const handleSelect = function(e) {

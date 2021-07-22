@@ -5,12 +5,14 @@
     color: white;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     border-radius: 1rem;
     box-shadow: 5px 10px black;
     font-family: 'Cairo', sans-serif;
     text-shadow: 2px 2px 4rem white;
 }
+
 
 .GDPosition {
     margin-top: 30px;
@@ -28,16 +30,45 @@
     margin-bottom: 0px;
 }
 
+@media (max-width: 700px) {
+    .GDTitle{
+        font-size: 2rem;
+    }
+}
+@media (max-width: 500px) {
+    .GDTitle{
+        font-size: 1.5rem;
+    }
+}
+
 .GDBoxConteiner {
     display: flex;
     padding: 4rem;
     height: auto;
 }
 
+@media (max-width: 1350px) {
+    .GDBoxConteiner{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+}
+
+
 .GD1Box {
     width: 65%;
     height: auto;
     border: 1px solid white;
+    float: left;
+    max-height: 800px;
+}
+
+@media (max-width: 1350px) {
+    .GD1Box{
+        width: 95%;
+    }
 }
 
 .GD2Box {
@@ -51,6 +82,14 @@
     text-align: center;
 }
 
+@media (max-width: 1350px) {
+    .GD2Box{
+        flex-direction: raw;
+        padding: 0rem;
+        width: 80%;
+    }
+}
+
 .GDGenres {
     display: flex;
     text-align: center;
@@ -59,6 +98,12 @@
     align-items: center;
     width: 30%;
 
+}
+
+@media (max-width: 500px) {
+    .GDGenres{
+        font-size: 0.7rem;
+    }
 }
 
 .GDInfoCont {
@@ -70,6 +115,20 @@
     text-shadow: 2px 2px 1  rem black;
 }
 
+@media (max-width: 500px) {
+    .GDInfoCont{
+        font-size: 0.7rem;
+    }
+    .GDExtraInfo{
+        font-size: 0.7rem;
+    }
+}
+@media (max-width: 350px) {
+    .GDInfoCont{
+        font-size: 0.6rem;
+    }
+}
+
 .GDExtraInfo {
     width: 40%;
     display: flex;
@@ -77,14 +136,25 @@
     align-items: center;
     margin-bottom: 2rem;
 }
+@media (max-width: 1350px) {
+    .GDExtraInfo{
+        width: 90%;
+    }
+}
 
 .GDSizeBold {
     font-size: 1.5rem;
     font-weight: bolder;
 }
 
+@media (max-width: 500px) {
+    .GDSizeBold{
+        font-size: 1rem;
+    }
+}
+
 .GDPt{
-    width: 50%;
+    width: 60%;
 }
 
 .GDPtCont {

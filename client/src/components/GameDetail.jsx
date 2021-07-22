@@ -32,7 +32,7 @@ function GameDetail({gameDetail, getGameDetail, id}) {
                 </div>
                 {/* Extra info cont */}
                 <div className="GDExtraInfo">
-                            <p><span style={{ fontWeight: 'bolder' }}>Rating: </span>
+                            <p className="GDPt"><p style={{ fontWeight: 'bolder' }}>Rating: </p>
                             {gameDetail &&
                             Math.round(gameDetail.rating) >= 1 && <AiTwotoneStar/>}
                             {gameDetail &&

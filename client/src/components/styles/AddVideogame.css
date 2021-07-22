@@ -14,6 +14,8 @@
     color: white;
 }
 
+
+
 .Data{
     display: flex;
     width: 60%;
@@ -33,6 +35,24 @@
     flex-direction: column;
     margin: 5px;
     width: 50%
+}
+
+@media (max-width: 1250px){
+    .DForm{
+        width: 90%;
+        justify-content: center;
+        padding: 0;
+    }
+    .Data{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        padding-bottom: 3rem;
+    }
+    .DInput{
+        width: 80%;
+    }
 }
 
 .DInputRel{
@@ -72,7 +92,7 @@ input:valid {
 .AVSubmit{
     position: absolute;
     left: 50%;
-    top: 95%;
+    top: 93%;
     border: none;
     color: white;
     text-decoration: none;
@@ -129,6 +149,18 @@ input:valid {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 1250px) {
+    .PWPreview{
+        display: none;
+    }
+    .PWConteiner{
+        display: none;
+    }
+    .ptConteiner{
+        width: 80%;
+    }
 }
 
 .PWConteiner {
