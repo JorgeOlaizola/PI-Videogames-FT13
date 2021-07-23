@@ -3,7 +3,7 @@ import { GETGAMEDETAIL, GETGENRES, GETVIDEOGAMES, ORDERBY,  } from "./const";
 
 export function getVideogames(query) {
     return function (dispatch) {
-        axios.get('http://localhost:3001/videogames' + query)
+        axios.get('/videogames' + query)
         .then((response) => {
              dispatch({type: GETVIDEOGAMES, payload: response.data})
         })    
@@ -21,13 +21,13 @@ export function addVideogame (payload) {
         released: payload.date
     } 
     return function(){
-        axios.post('http://localhost:3001/videogame', post)
+        axios.post('/videogame', post)
     }
 }
 
 export function getGameDetail (id) {
     return function(dispatch){
-        axios.get('http://localhost:3001/videogames/' + id)
+        axios.get('/videogames/' + id)
         .then((response) => {
              dispatch({type: GETGAMEDETAIL, payload: response.data})
         })    
@@ -36,7 +36,7 @@ export function getGameDetail (id) {
 
 export function getGenres () {
     return function(dispatch){
-        axios.get('http://localhost:3001/genres')
+        axios.get('/genres')
         .then((response) => {
             dispatch({type: GETGENRES, payload: response.data})
         })
