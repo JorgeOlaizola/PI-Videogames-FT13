@@ -91,6 +91,9 @@
     height: 100%;
 }
 
+.Conteiner:hover .Img{
+    opacity: 50%;   
+}
 
 .Link {
     width: 30%;
